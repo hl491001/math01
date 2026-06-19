@@ -14,7 +14,6 @@
 \usepackage{float}
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{fancyhdr}
 \usepackage{graphicx}
 
 \captionsetup{font=small,labelsep=quad}
@@ -40,11 +39,7 @@
   extendedchars=true
 }
 
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{\small 多工序协同作业下的车间整修调度与资源分配}
-\lfoot{}\rfoot{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{plain}
 
 \title{\bfseries 多工序协同作业下的车间整修任务调度与资源分配优化}
 \author{}
@@ -52,7 +47,6 @@
 
 \begin{document}
 \maketitle
-\thispagestyle{fancy}
 
 %==================================================================
 \begin{center}
@@ -256,6 +250,12 @@ s_{o'} \ge s_o + p_{o,r} + \tau_{w(o),w(o')},
 \item 将父代 $P_2$ 中不属于 $\mathcal{J}$ 的基因按其原有顺序依次填入 $C$ 的空位。
 \end{enumerate}
 这一过程保留了 $P_1$ 中属于 $\mathcal{J}$ 车间的工序相对顺序，同时从 $P_2$ 继承了其余车间的工序顺序，实现了遗传信息的有效传递。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{figs/pox.png}
+\caption{POX 交叉操作示意图（示例：5 个车间、染色体长度 8，$\mathcal{J}=\{\mathrm{A},\mathrm{C}\}$。步骤 1 将父代 $P_1$ 中属于 $\mathcal{J}$ 的基因原位复制到子代；步骤 2 将父代 $P_2$ 中不属于 $\mathcal{J}$ 的基因按原有顺序依次填入子代空位，得到完整子代染色体 $C$）}\label{fig:pox}
+\end{figure}
 
 \item \textbf{变异操作——对换变异（Swap Mutation）}：以概率 $p_m=0.2$ 对交叉产生的子代执行变异：随机选取染色体上两个不同位置，交换其基因值。对换变异不改变多重集约束，仅微调车间工序的交错顺序，有助于跳出局部最优。
 
