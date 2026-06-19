@@ -226,6 +226,36 @@ s_{o'} \ge s_o + p_{o,r} + \tau_{w(o),w(o')},
 \subsubsection{元启发式层与 Hint 热启动}
 染色体为工序序编码；解码口径与模型一致（协同取 $\max_r p_{o,r}$、并行转场）。由 $\{s_o\}$ 反推各资源访问序构造路由弧 Hint。
 
+\medskip
+\noindent\textbf{CP-SAT Hint 机制说明}：CP-SAT 求解器提供 \texttt{AddHint(var, value)} 接口，允许在求解开始前向模型变量注入一组"提示值"。其工作原理与上下界截断有本质区别，以下从四个维度加以说明。
+
+\begin{enumerate}[leftmargin=2.2em, label=(\arabic*)]
+\item \textbf{Hint 的性质：搜索引导而非可行域截断}。CP-SAT 接收到 Hint 后，将其作为搜索的"优先探索方向"，而非将变量固定或增加硬约束。求解器利用 Hint 完成三项内部操作：
+\begin{itemize}
+\item \textbf{初始解构造}：若 Hint 给出的是可行解，求解器可直接将其作为第一个可行解（incumbent），从而在搜索伊始即获得一个紧的上界；
+\item \textbf{分支优先级引导}：求解器在分支定界过程中，倾向于优先探索 Hint 值附近的变量赋值，使搜索资源集中在高质量区域；
+\item \textbf{邻域搜索（LNS）初始化}：CP-SAT 内置的大邻域搜索（Large Neighborhood Search）以 Hint 值为中心生成邻域，快速局部改进。
+\end{itemize}
+\textbf{关键区别}：如果将元启发式上界 $C_{\max}^{\mathrm{ub}}$ 设为 $C_{\max}\le C_{\max}^{\mathrm{ub}}$ 的硬约束，当元启发式给出的是次优值时，精确最优解可能被裁剪在可行域之外，导致 CP-SAT 无法找到真正的最优解。而 Hint 不裁剪搜索空间——若 Hint 值恰好等于最优值，求解器可快速证明零间隙；若 Hint 仅为近似值，求解器仍保留探索更优解的自由度。
+
+\item \textbf{Hint 注入的变量内容}。本文向 CP-SAT 注入三类提示信息：
+\begin{itemize}
+\item \textbf{开工与完工时刻}：对每道工序 $i$，注入 $\texttt{AddHint}(S_i, s_i^{\text{heur}})$ 和 $\texttt{AddHint}(E_i, f_i^{\text{heur}})$。其中 $s_i^{\text{heur}}$ 和 $f_i^{\text{heur}}$ 为元启发式（GA $\rightarrow$ SA）解码得到的开工与完工时刻；
+\item \textbf{总完工时间}：注入 $\texttt{AddHint}(C_{\max}, C_{\max}^{\mathrm{ub}})$，为求解器提供目标值参考；
+\item \textbf{路由弧}：由 $\{s_i^{\text{heur}}\}$ 按各工序开工时刻升序排列，反演出每类设备 $r$ 的工序访问序列 $\pi_r$。若 $\pi_r=(o_1,o_2,\dots,o_k)$，则注入
+\[
+\texttt{AddHint}(x^{r}_{0,o_1}, 1),\quad
+\texttt{AddHint}(x^{r}_{o_j,o_{j+1}}, 1)\;(j=1,\dots,k-1),\quad
+\texttt{AddHint}(x^{r}_{o_k,0}, 1),
+\]
+其余弧变量注入 $\texttt{AddHint}(x^{r}_{o,o'}, 0)$。路由弧 Hint 使 CP-SAT 的 \texttt{AddCircuit} 约束可直接利用已知访问顺序，省去从零构造回路的搜索开销。
+\end{itemize}
+
+\item \textbf{Hint 信息的来源与校验}。Hint 所依据的 $\{s_i^{\text{heur}}\}$ 来源于 GA $\rightarrow$ SA 两层元启发式解码结果。解码过程严格采用与 CP-SAT 模型一致的假设（并行转场、协同取 $\max$、设备提前释放），且解码结果经独立可行性校验器 \texttt{validate.py} 逐项检查后方才注入，确保 Hint 指向的是可行解而非违反约束的不可行点。若元启发式因随机性未能收敛至可行解（罕见但可能），该轮 Hint 将被放弃，回退为纯冷启动求解。
+
+\item \textbf{加速效果}。在问题二至四上，热启动（注入 Hint）相比冷启动（不注入 Hint）的 CP-SAT 求解耗时加速比约 $1.4\times$--$2.1\times$（见表~\ref{tab:coldhot}）。对于绝对求解时间较长（$>10\,\mathrm{s}$）的中大规模调度实例，Hint 降低搜索盲目性的收益尤为显著。本文所涉问题因模型规模紧凑（$|\mathcal{O}|=34$），冷启动已可在亚秒级收敛到最优解，故加速比的绝对值有限；但 Hint 机制本身在大规模变体或更严苛时限下是不可或缺的求解效率保障。
+\end{enumerate}
+
 \subsubsection{调参结果（表~\ref{tab:tune}）与冷/热对比（表~\ref{tab:coldhot}）}
 在问题二上网格搜索 GA/SA 参数，推荐 $N_{\mathrm{pop}}=150$，$G=800$，$p_m=0.2$，$T_0=4000$，$\alpha=0.97$，$N_{\mathrm{iter}}=400$，上界达 $144880\,\mathrm{s}$（间隙 $0$）。
 
