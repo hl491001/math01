@@ -223,8 +223,131 @@ s_{o'} \ge s_o + p_{o,r} + \tau_{w(o),w(o')},
 
 本文采用两层混合策略：GA $\rightarrow$ SA $\rightarrow$ \texttt{validate} 得可行上界 $C_{\max}^{\mathrm{ub}}$ 与 $\{s_o\}$；经校验后以 \texttt{AddHint} 注入 $S_i$、$E_i$、$C_{\max}$ 及路由弧，引导 CP-SAT 加速零间隙证明。元启发式不是最终答案来源；Hint 不将 $C_{\max}\le C_{\max}^{\mathrm{ub}}$ 设为硬约束。
 
-\subsubsection{元启发式层与 Hint 热启动}
-染色体为工序序编码；解码口径与模型一致（协同取 $\max_r p_{o,r}$、并行转场）。由 $\{s_o\}$ 反推各资源访问序构造路由弧 Hint。
+\subsubsection{元启发式层：遗传算法与模拟退火}
+
+\textbf{编码方案}。设待整修的车间数为 $n_w$（问题二取 $n_w=5$），各车间 $w$ 的工序链长度为 $L_w=|\mathcal{O}_w|$。染色体 $\mathbf{c}$ 为一个长度为 $\sum_w L_w$（问题二为 34）的整数序列，其中车间编号 $w$ 出现恰好 $L_w$ 次。解码时从左至右扫描染色体，每当读到车间 $w$，即调度该车间当前待执行的下一个工序。该编码称为\textbf{基于工序的排列编码（permutation encoding）}，天然保证每个车间内工序的先后顺序约束，且任意排列均对应一个完整调度方案。解码过程采用串行调度生成机制（serial schedule generation scheme, SSGS），严格遵循与 CP-SAT 模型一致的口径：
+\begin{itemize}
+\item 工序开工时刻 = $\max\{\,\text{该车间前序工序完工时刻},\ \max_{r\in\mathcal{R}(o)}\{\text{类型 }r\text{ 空闲时刻} + \tau_{\text{loc}(r),\text{ws}(o)}\}\,\}$；
+\item 对协同工序，两类设备均分配作业时间，工期取 $\max$；
+\item 同一类型 $n_r$ 台设备聚合为一台超级机器，单次跨车间转运仅计一次 $\tau$（并行转场）；
+\item 设备在完成其分内作业（$p_{o,r}$）后立即释放，不等待工序整体完工。
+\end{itemize}
+
+\medskip
+\noindent\textbf{遗传算法（GA）}。GA 作为第一层全局搜索器，在解空间快速定位高质量区域，详细设计如下：
+
+\begin{enumerate}[leftmargin=2.2em, label=(\arabic*)]
+\item \textbf{种群初始化}：随机生成 $N_{\mathrm{pop}}=150$ 个染色体。每个染色体通过对模板向量（5 个车间按工序链长度展开：$[0,0,0,1,1,1,1,2,\dots,4,4,4]$）随机打乱（\texttt{random.sample}）生成，保证每个车间编号出现次数恰等于其工序数，即所有个体均满足多重集约束。
+
+\item \textbf{适应度评价}：对每个染色体调用 \texttt{decode\_full} 解码器进行串行调度，所得 makespan 即为其适应度值（越小越优）。解码时间复杂度为 $O(|\mathcal{O}|\cdot|\mathcal{R}|)$，在此规模下单次解码耗时远小于 1 ms。
+
+\item \textbf{选择操作——锦标赛选择（Tournament Selection）}：每次从种群中随机抽取 $k=3$ 个个体，选择其中适应度最优者作为父代。重复两次选出两个父代进入交叉步骤。锦标赛选择避免了对适应度尺度的依赖，且通过调整 $k$ 可灵活控制选择压力。
+
+\item \textbf{交叉操作——优先保留顺序交叉（POX, Precedence Operation Crossover）}：POX 专为基于工序的排列编码设计，保证子代染色体仍然满足多重集约束（每个车间编号出现次数不变）。操作步骤（图~\ref{fig:pox}）：
+\begin{enumerate}
+\item 从 $n_w$ 个车间中随机选取一个非空真子集 $\mathcal{J}$（至少包含 1 个车间，至多 $n_w-1$ 个）；
+\item 将父代 $P_1$ 中属于 $\mathcal{J}$ 的基因按原位保留到子代 $C$ 的相同位置；
+\item 将父代 $P_2$ 中不属于 $\mathcal{J}$ 的基因按其原有顺序依次填入 $C$ 的空位。
+\end{enumerate}
+这一过程保留了 $P_1$ 中属于 $\mathcal{J}$ 车间的工序相对顺序，同时从 $P_2$ 继承了其余车间的工序顺序，实现了遗传信息的有效传递。
+
+\item \textbf{变异操作——对换变异（Swap Mutation）}：以概率 $p_m=0.2$ 对交叉产生的子代执行变异：随机选取染色体上两个不同位置，交换其基因值。对换变异不改变多重集约束，仅微调车间工序的交错顺序，有助于跳出局部最优。
+
+\item \textbf{精英保留（Elitism）}：每一代结束时，将当前种群中的最优个体原封不动地复制到下一代。此策略确保最优适应度在迭代过程中单调非增（不会丢失已发现的最好解）。
+
+\item \textbf{终止条件}：迭代 $G=800$ 代后停止，返回历史最优个体及其解码所得的 makespan 与各工序开工时刻 $\{s_o\}$。
+\end{enumerate}
+
+算法伪代码如算法~\ref{alg:ga} 所示。
+
+\begin{table}[H]
+\centering
+\caption{遗传算法伪代码（GA for Q2）}\label{alg:ga}
+\begin{tabular}{p{14cm}}
+\toprule
+\textbf{Algorithm 1} Genetic Algorithm for Multi-Workshop Scheduling \\
+\midrule
+\textbf{Input:} operations $\mathcal{O}$, jobs $\{ \mathcal{O}_w\}$, bases $\mathcal{B}$, $N_{\mathrm{pop}}=150$, $G=800$, $p_m=0.2$ \\
+\textbf{Output:} best makespan $C^*$, best chromosome $\mathbf{c}^*$ \\
+\midrule
+1.\quad $\text{template} \leftarrow [\,w \text{ repeated } L_w \text{ times for each workshop } w\,]$ \\
+2.\quad $P \leftarrow \{\,\text{random.shuffle(template) for } i=1,\dots,N_{\mathrm{pop}}\,\}$ \\
+3.\quad \textbf{for } $i=1$ \textbf{to} $N_{\mathrm{pop}}$ \textbf{do} $\mathit{fit}[i] \leftarrow \texttt{decode\_full}(P[i])$ \\
+4.\quad $(\mathbf{c}^*, C^*) \leftarrow$ best of $P$ \\
+5.\quad \textbf{for } $g=1$ \textbf{to} $G$ \textbf{do} \\
+6.\quad\quad $P' \leftarrow [\,\mathbf{c}^*\,]$ \hfill // elitism \\
+7.\quad\quad \textbf{while } $|P'| < N_{\mathrm{pop}}$ \textbf{do} \\
+8.\quad\quad\quad $p_1 \leftarrow \texttt{tournament}(P, \mathit{fit}, k=3)$ \\
+9.\quad\quad\quad $p_2 \leftarrow \texttt{tournament}(P, \mathit{fit}, k=3)$ \\
+10.\quad\quad\quad $\mathbf{c} \leftarrow \texttt{pox}(p_1, p_2)$ \\
+11.\quad\quad\quad \textbf{if } $\mathrm{rand}() < p_m$ \textbf{then} $\texttt{swap\_mutate}(\mathbf{c})$ \\
+12.\quad\quad\quad $P'.\mathrm{append}(\mathbf{c})$ \\
+13.\quad\quad $P \leftarrow P'$;  update $\mathit{fit}$ \\
+14.\quad\quad \textbf{if } $\min(\mathit{fit}) < C^*$ \textbf{then} update $(\mathbf{c}^*, C^*)$ \\
+15.\quad \textbf{return } $(C^*, \mathbf{c}^*)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+\noindent\textbf{模拟退火（SA）}。GA 求得的高质量解作为 SA 的初始解，SA 通过概率性接受劣解的能力进一步在局部区域精细搜索，避免陷入 GA 遗漏的深谷。详细设计如下：
+
+\begin{enumerate}[leftmargin=2.2em, label=(\arabic*)]
+\item \textbf{初始解}：取 GA 返回的最优染色体 $\mathbf{c}^*_{\mathrm{GA}}$。若 GA 因随机性未能收敛至可行解，则退化为随机生成初始解。
+
+\item \textbf{邻域结构}：每次迭代以等概率（各 $0.5$）从以下两种邻域算子中随机选择一种生成候选解 $\mathbf{c}'$：
+\begin{itemize}
+\item \textbf{对换邻域（Swap）}：随机选择染色体上两个不同位置 $i, j$，交换 $\mathbf{c}[i]$ 与 $\mathbf{c}[j]$。该操作将两个车间的工序交错顺序互换一个节点，适合微调车间间的优先级关系。
+\item \textbf{重插入邻域（Reinsert）}：随机选择一个位置 $i$，取出基因 $g=\mathbf{c}[i]$，再随机选择一个插入位置 $j$（$j\neq i$），将 $g$ 插入至位置 $j$。该操作等价于将某一工序在调度序列中向前或向后平移若干位置，可探索更大幅度的结构变动。
+\end{itemize}
+两种邻域均保持多重集约束（每个车间编号的出现次数不变）。
+
+\item \textbf{接受准则——Metropolis 准则}：设当前解的 makespan 为 $f(\mathbf{c})$，候选解为 $f(\mathbf{c}')$。若 $f(\mathbf{c}')\le f(\mathbf{c})$（候选解不劣于当前解），则无条件接受 $\mathbf{c}\leftarrow\mathbf{c}'$；若 $f(\mathbf{c}')>f(\mathbf{c})$（候选解更差），则以概率
+\[
+P_{\mathrm{accept}} = \exp\!\left(\frac{f(\mathbf{c}) - f(\mathbf{c}')}{T}\right)
+\]
+接受劣解，其中 $T$ 为当前温度。该机制使算法在高温阶段具备较强的逃离局部最优的能力，在低温阶段趋于贪婪搜索。
+
+\item \textbf{冷却策略——指数退火（Exponential Cooling）}：初温 $T_0=4000$，终温 $T_{\mathrm{end}}=10^{-2}$，每完成 $N_{\mathrm{iter}}=400$ 次邻域尝试后，温度按 $T\leftarrow \alpha T$ 衰减，冷却系数 $\alpha=0.97$。总温度级数约为 $\log_{0.97}(10^{-2}/4000)\approx 424$ 级，总邻域尝试次数约 $424\times400\approx 1.7\times 10^5$ 次。
+
+\item \textbf{最优解追踪}：全程维护历史最优解 $\mathbf{c}_{\mathrm{best}}$ 及其 makespan $f_{\mathrm{best}}$。即使当前解因接受劣解而变差，历史最优解也不会丢失。算法返回 $f_{\mathrm{best}}$ 对应的 makespan 和开工时刻。
+\end{enumerate}
+
+算法伪代码如算法~\ref{alg:sa} 所示。
+
+\begin{table}[H]
+\centering
+\caption{模拟退火伪代码（SA for Q2）}\label{alg:sa}
+\begin{tabular}{p{14cm}}
+\toprule
+\textbf{Algorithm 2} Simulated Annealing for Multi-Workshop Scheduling \\
+\midrule
+\textbf{Input:} operations $\mathcal{O}$, jobs $\{\mathcal{O}_w\}$, bases $\mathcal{B}$, initial chromosome $\mathbf{c}_{\mathrm{init}}$, \\
+\qquad\;\; $T_0=4000$, $T_{\mathrm{end}}=10^{-2}$, $\alpha=0.97$, $N_{\mathrm{iter}}=400$ \\
+\textbf{Output:} best makespan $f_{\mathrm{best}}$, best chromosome $\mathbf{c}_{\mathrm{best}}$ \\
+\midrule
+1.\quad $\mathbf{c} \leftarrow \mathbf{c}_{\mathrm{init}}$; $f \leftarrow \texttt{decode\_full}(\mathbf{c})$ \\
+2.\quad $\mathbf{c}_{\mathrm{best}} \leftarrow \mathbf{c}$; $f_{\mathrm{best}} \leftarrow f$ \\
+3.\quad $T \leftarrow T_0$ \\
+4.\quad \textbf{while } $T > T_{\mathrm{end}}$ \textbf{do} \\
+5.\quad\quad \textbf{for } $i=1$ \textbf{to} $N_{\mathrm{iter}}$ \textbf{do} \\
+6.\quad\quad\quad \textbf{if } $\mathrm{rand}() < 0.5$ \textbf{then} $\mathbf{c}' \leftarrow \texttt{swap}(\mathbf{c})$ \\
+7.\quad\quad\quad \textbf{else } $\mathbf{c}' \leftarrow \texttt{reinsert}(\mathbf{c})$ \\
+8.\quad\quad\quad $f' \leftarrow \texttt{decode\_full}(\mathbf{c}')$ \\
+9.\quad\quad\quad \textbf{if } $f' \le f$ \textbf{or } $\mathrm{rand}() < \exp((f-f')/T)$ \textbf{then} \\
+10.\quad\quad\quad\quad $\mathbf{c} \leftarrow \mathbf{c}'$; $f \leftarrow f'$ \\
+11.\quad\quad\quad\quad \textbf{if } $f < f_{\mathrm{best}}$ \textbf{then} $\mathbf{c}_{\mathrm{best}} \leftarrow \mathbf{c}$; $f_{\mathrm{best}} \leftarrow f$ \\
+12.\quad\quad $T \leftarrow \alpha \cdot T$ \\
+13.\quad \textbf{return } $(f_{\mathrm{best}}, \mathbf{c}_{\mathrm{best}})$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+\noindent\textbf{GA $\rightarrow$ SA 级联策略}。GA 与 SA 不是独立运行的两种可选算法，而是\textbf{两级串行级联}：GA（全局搜索）→ SA（局部精化）。GA 迭代 800 代后，将最优染色体传递至 SA 作为初始解；SA 在 GA 已锁定的高质量区域进行更密集的局部探测。若 SA 结果优于 GA，则以 SA 结果作为最终上界；否则退回 GA 结果。该设计利用了两种算法的互补优势——GA 的种群多样性覆盖全局，SA 的概率跳出机制精细改进局部。
+
+\subsubsection{Hint 热启动}
+由元启发式层（GA $\rightarrow$ SA）获得可行调度后，提取各工序开工时刻 $\{s_o\}$，按开工时刻升序排列反推每类设备的工序访问序列，构造路由弧 Hint 注入 CP-SAT。以下为 Hint 机制的完整说明。
 
 \medskip
 \noindent\textbf{CP-SAT Hint 机制说明}：CP-SAT 求解器提供 \texttt{AddHint(var, value)} 接口，允许在求解开始前向模型变量注入一组"提示值"。其工作原理与上下界截断有本质区别，以下从四个维度加以说明。
