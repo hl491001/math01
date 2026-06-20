@@ -1,0 +1,1954 @@
+
+
+c aa b  MATLAB  b
+a b  b t = 0.005s   1.4050s9b
+aa bcGA  4.5000s3b
+ abc10 b 1 = 179.5595a v1 = 121.2417m/s5 6.8800sb 8b b
+-a b b 10.6500s 89b
+- 40 b  b 31.0800s  FY1 11b      
+1
+
+a 
+1 . 1   FY1  M1 
+aab  b   b b
+1 . 2   FY1 
+aab  ab aacGA bb
+1 . 3   FY1 
+ba bb   b b b
+2
+
+1 . 4  
+aab --b aab  b b
+1 . 5  aa
+b- -b 40  b b
+a 
+1. b 2. 
+b 3. b 4. 
+b 5. 
+b 6. b 7. 
+b
+3
+
+
+Mi
+Aj
+Mi(t) Aj (t)
+vm m i vj aj tjd,k Pjd,k tjb,k Pjb,k Cj,k(t)
+j
+j,k
+vs Rs Te r h g
+
+a 
+
+ 1 
+
+ i  i  {1, 2, 3}
+ j  j  {1, 2, 3, 4, 5}
+ Mi  t   j  t 
+  Mi 
+ j   j   j  k 
+k  {1, 2, 3}  j  k   j  k   j  k   j  k 
+  j  x 
+  [0, 2]  j  k 
+       9.81m/s2
+
+
+m
+m
+m m m/s m m/s m s
+m s m m
+rad
+s
+m/s m s m m m/s2
+
+4
+
+a 
+4 . 1  4 . 1 . 1 
+aa1  O(0,0,0),  xOy z  bb
+
+ 1 
+
+M1 A1 Ot  bb
+
+4 . 1 . 2 
+ M1  M1bM1  vm b
+
+m 1
+
+=
+
+0 0
+
+- -
+
+M1 . M1
+
+(1)
+
+ M1  t 
+
+M1(t) = M1 + vm t m 1.
+
+(2)
+
+5
+
+4 . 1 . 3 
+ FY1     10m b Step.1:  FY1 
+ FY1  v1  FY1   xOyb FY1  x  1(2)
+
+a1 = (cos 1, sin 1, 0)
+
+(3)
+
+ A0
+
+a1
+
+=
+
+A0 A0
+
+- -
+
+A1 . A1
+
+(4)
+
+A0  FY1  FY1 b
+
+ 2 
+
+ FY1  t = 0sb t 
+
+A1(t) = A1 + v1 t a1.
+
+(5)
+
+6
+
+ td1,1 
+
+p1d,1 = A1(t1d,1).
+
+(6)
+
+Step.2:   v1 b
+ FY1  y  0 FY1   xOz 3b
+
+ 3 
+
+ x  y  vh,x  vh,y t  [t1d,1, tb1,1]  x(t)ay(t)az(t) 
+
+x(t) = x1d,1 + vh,x(t - td1,1),
+
+(7)
+
+y(t) = y1d,1 + vh,y(t - td1,1),
+
+(8)
+
+z(t)
+
+=
+
+z1d,1
+
+-
+
+1 2
+
+g(t
+
+-
+
+td1,1)2.
+
+(9)
+
+ 1,1 
+
+pb1,1
+
+= (xd1,1 + vh,x1,1,
+
+y1d,1 + vh,y1,1,
+
+z1d,1 -
+
+1 2
+
+g12,1
+
+) ,
+
+(10)
+
+
+
+1,1 = t1b,1 - t1d,1 = 3.6 s.
+
+(11)
+
+7
+
+Step.3:   z  vs b
+t  [tb1,1, tb1,1 + Te] 
+
+C1,1(t) = pb1,1 - (0, 0, vs(t - tb1,1)).
+
+(12)
+
+4 . 1 . 4 
+ b b
+ 1 ()  t T  P  M1(t)  M1(t)P  Q, Q c S(t)4b
+
+P  T , Q  S(t), s.t. Q  M1(t)P
+ T b S(t)  C(t) a  Rs = 10 m  3 m/s b
+
+ 4 
+4 . 1 . 5   c5b 
+8
+
+b
+ 5   t  S(t) O(t) Rsb t   M1(t) a S(t) b  t  S(t) b5L Ct Cb b Ct  Cb 1 b   1  b AB
+A, B  S, s.t.A  AM, B  BM 
+P  AB, P   S, s.t.P   P M  1 6 P  AB ABP M  P  A, B  S  P   AB P   S1,  P  S b
+7a Ct  Cb 1  Ct  Cb  d 1b  h 11 b
+b
+9
+
+ 6 
+
+(a) 
+
+7
+
+(b) P () 
+
+  t  t  b
+ Ct 7b OtP    x  OtP  [0, 2)b P  P () 
+
+P () = Ct + r(cos , sin , 0)
+
+(13)
+
+ Ct c8 P ()M 
+
+
+
+L
+
+
+
+
+
+
+
+b
+
+
+
+
+
+ 2
+
+
+
+P ()
+
+
+
+b
+
+
+
+
+
+ 2
+
+
+
+<
+
+
+
+
+
+cos 
+
+>
+
+cos b
+
+10
+
+
+
+g() = cos () - cos   0,   [0, 2)
+
+(14)
+
+ 8 P () 
+
+ 
+
+(P () - M ) · u cos () =
+P () - M 
+
+ (14) 
+
+g()
+
+=
+
+(P () - M ) · u P () - M 
+
+- cos 
+
+
+
+0
+
+(15)
+
+ u b
+
+ (15) 
+
+N () g() =
+D()
+
+
+
+N () = (P () - M ) · u - cos  · P () - M  D() = P () - M 
+ D() > 0 g()  N () 
+
+N ()  0,   [0, 2)
+
+(16)
+
+
+
+11
+
+ A() = (P () - M ) · uB() = cos  · P () - M 
+
+N () = A() - B()
+ B() > 0 b A() < 0 N () < 0  b
+
+A() = (P () - M ) · u  0,   [0, 2)
+
+(17)
+
+ A()  
+Amin = s0 - r A2 + B2
+
+ s0 = (Ct - M ) · uA = uxB = uyb Amin < 0 b 
+ (17) A()  0  B() > 0b N ()  0  
+A()  B()
+
+
+[A()]2  [B()]2
+
+
+
+[(P () - M ) · u]2  cos2  · P () - M 2
+
+
+
+h() = [(P () - M ) · u]2 - cos2  · P () - M 2
+
+(18)
+
+ Ct 
+
+h()  0,   [0, 2)  P () = Ct + r(cos , sin , 0)  h() 
+
+h() = C0 + C1 cos  + C2 sin  + C3 cos 2 + C4 sin 2
+
+12
+
+
+
+C0
+
+=
+
+s02
+
+-
+
+k(W2
+
++
+
+r2)
+
++
+
+1 r2(A2 2
+
++
+
+B2)
+
+C1 = 2r(s0A - kC1)
+
+C2 = 2r(s0B - kC2)
+
+C3
+
+=
+
+1 r2(A2 2
+
+-
+
+B2)
+
+C4 = r2AB
+
+ k = cos2 W2 = Ct - M 2C1 = (Ct - M )xC2 = (Ct - M )yb
+
+
+
+m
+
+=
+
+tan
+
+ 2
+
+
+
+h()
+
+
+
+P (m) = c4m4 + c3m3 + c2m2 + c1m + c0
+
+(19)
+
+
+
+c0 = C0 + C1 + C3 c1 = 2C2 + 4C4 c2 = 2C0 - 6C3 c3 = 2C2 - 4C4 c4 = C0 - C1 + C3
+ P (m)  b
+ P (m)  1.  c4 c4 < -c = 10-12 P (m)  -c m  ±
+ false 2.  |c4| <  m = ±106  3.  P (m)  m = 0c
+ = 0 4.  Pmin < -c = 10-9
+ false true b
+
+13
+
+4 . 2 
+4 . 2 . 1 
+ M1  FY1  y  0  M1  FY1  xOy 9b  M1  S b t1  t3  t2  t  [t2, t3]  b t3 - t1b
+
+(a)  t1
+
+(b)  t2
+
+(c)  t3
+ 9 
+4 . 2 . 2 
+ MATLAB R2022b b M1  FY1 aaaa b (Te =20s) t  [t1b,1, tb1,1 + Te] = [5.1, 25.1] sb Te =20s t =0.005s,  N =4000 b
+ t1b,1 + ktck  (19)
+14
+
+b t1b,1 + kt 
+
+ tb1,1 + (k + 1)t 
+
+t1
+
+=
+
+tb1,1
+
++
+
+2k+1 2
+
+tb
+
+tb1,1
+
++
+
+htch
+
+
+
+ t1b,1 + (h + 1)t 
+
+
+
+t3
+
+=
+
+tb1,1
+
++
+
+2h+1 2
+
+tb
+
+ t1  t3  1  3 0 < |1| < t, 0 < |3| < t 0 <
+
+|1 + 3| < 2t t =0.005s  0.01s b
+
+4 . 2 . 3 
+ 8.0425s,   9.4475s,  1.4050sb
+
+a 
+5 . 1   FY1 a
+a b
+5 . 1 . 1  
+a.) 1:  FY1  x  b.) v1:  FY1  c.) td1,1:  FY1  d.) 1,1:  FY1 b
+5 . 1 . 2   vm b
+(1) (2)b
+5 . 1 . 3  
+FY1  b
+15
+
+Step.1:  FY1   FY1  xoy b FY1
+ FY1  t  td1,1  (3)(5)(6)b Step.2: 
+ FY1  g  v1 b 1,1 
+
+p1b ,1
+
+= (xd1,1 + v1 cos 1 1,1,
+
+y1d,1 + v1 sin 1 1,1,
+
+z1d,1 -
+
+1 2
+
+g12,1),
+
+(20)
+
+ (xd1,1, y1d,1, z1d,1) b(10)b Step.3: 
+ vs  z  (12)b
+
+5 . 1 . 4 
+
+
+
+b
+
+
+
+1, t ,
+
+(t) = 0, t 
+
+(21)
+
+
+
+ tb1,1+Te
+
+Tcover =
+
+(t) dt,
+
+tb1,1
+
+(22)
+
+ t1b,1 Te b  t 
+
+tn = t1b,1 + nt,
+
+n = 0, 1, . . . , N,
+
+N = Te , t
+
+(23)
+
+
+
+ N
+
+Tcover = (tn) t.
+
+(24)
+
+n=0
+
+16
+
+t = 0.005sb  Tcover b
+
+5 . 1 . 5 
+
+2b  0°  360° c70140 m/sa b
+
+ 2 
+
+     
+
+ 0  1 < 2 vmin  v1  vmax
+t1d,1  0 1,1  0 z1b,1  0
+
+5 . 1 . 6  
+
+max
+1, v1, t1d,1, 1,1
+
+Tcover(1, v1, td1,1, 1,1)
+
+s.t. 0  1 < 2,
+
+vmin  v1  vmax,
+
+(25)
+
+t1d,1  0,
+
+1,1  0, z1b,1  0,
+
+Tcover (21)  (24)b(25) b
+
+17
+
+5 . 2  GA 
+5 . 2 . 1 
+(25) (Genetic Algorithm, GA) [1]b 1.  Tcover 
+b 2. aa
+b 3. caa
+b cb 4. c(t)   Tcover  b aa b  1.  FY1  x = [1, v1, t1d,1, 1,1]b 2. 2b
+: lb = [0, 70, 0, 0] : ub = [2, 140, 40, 40]
+3.   [3.1230, 120, 1.5, 3.6] 199 b
+4.  F = -Tcover  -Tcover  b b
+ 200 500,000b  Bb
+5 . 2 . 2 
+3
+18
+
+ 3 
+
+  
+
+
+
+ 1 3.1230 rad c 178.9°
+
+ v1 99.2020 m/s
+
+
+
+ td1,1 0.8094 s
+
+
+
+ 1,1 3.3250 s
+
+
+
+
+
+Tcover = 4.5000 s
+ b
+
+a 
+6 . 1  --
+b
+
+6 . 1 . 1 
+
+ FY1  3  M1  b 1  3   3 b
+
+a.) 1:  FY1  x  b.) v1:  FY1  c.) {td1,k}k3=1:  FY1  k k  {1, 2, 3} d.) {1,k}k3=1:  FY1  k k  {1, 2, 3}b 
+
+x3
+
+( = 1,
+
+v1,
+
+{td1,k }3k=1 ,
+
+{1,k }k3 =1 ),
+
+(26)
+
+19
+
+6 . 1 . 2 
+ b M1  FY1 a k   b
+
+pd1,k = A1(t1d,k)
+
+(27)
+
+t1b,k = td1,k + 1,k
+
+(28)
+
+p1b ,k
+
+= (xd1,k + v1 cos 1 1,k,
+
+y1d,k + v1 sin 1 1,k,
+
+z1d,k -
+
+1 2
+
+g12,k
+
+)
+
+(29)
+
+C1,k(t) = pb1,k - (0, 0, vs(t - t1b,k)), t  [t1b,k, tb1,k + Te]
+
+(30)
+
+k , k  {1, 2, 3}b
+
+6 . 1 . 3 
+a b10 t  Ct  S1(t)  Cb  S2(t) a b
+
+ 10 
+aaa bc11 1.  640 c n = 1b 2.  n b 3.  h1, h2, h3b 4.  Rsc h1 < Rs, h2 < Rs, h3 < Rs
+20
+
+· b · b
+5.  n 
+·  n < 640 n = n + 1  2b ·  n = 640b
+
+ 11 
+
+6 . 1 . 4 
+ (t)  Tcover c (21)  (24)b
+ b b tn  (tn) = 1 (tn) = 0b
+(31) b
+
+Tcover(x3).
+
+(31)
+
+6 . 1 . 5  4b
+
+21
+
+ 4 
+
+ 
+   
+
+
+0  1 < 2 vmin  v1  vmax t1d,k  0, t1d,k+1 - td1,k  1 1,k  0, k  {1, 2, 3} z1b,k  0, k  {1, 2, 3}
+
+ 4b
+
+6 . 1 . 6 
+
+aa 
+max Tcover(x3)
+x3
+
+s.t. 0  1 < 2,
+
+vmin  v1  vmax,
+
+(32)
+
+td1,k  0, t1d,k+1 - td1,k  1,
+
+1,k  0, z1b,k  0,
+
+(
+
+)
+
+k  {1, 2, 3}x3 = 1, v1, {td1,k}3k=1, {1,k}3k=1
+
+6 . 2 
+6 . 2 . 1 
+cGAc  B 11b
+ 1 = 179.5595 v1 = 121.2417m/s5b
+
+22
+
+ 5 
+
+  1  2  3
+
+ (s) 0.0993 3.1929 5.1680
+
+ (s) 3.4747 4.8082 5.4649
+
+ 6.8800sb
+6 . 2 . 2 
+ 1  180 b -  b
+
+6 . 2 . 3 
+
+  8b result1.xlsxb
+
+ 6 
+
+  (s)
+
+ 1
+
+3.4150
+
+ 2
+
+2.6400
+
+ 3
+
+1.0600
+
+6 . 2 . 4 
+ b  bb
+
+23
+
+a 
+7 . 1  --
+b
+
+7 . 1 . 1 
+
+
+
+x4
+
+=
+
+( {j
+
+}3j=1
+
+,
+
+{vj }3j=1 ,
+
+{tdj,1}j3=1,
+
+{j,1}3j=1),
+
+(33)
+
+7 . 1 . 2 
+-- b
+
+m 1
+
+=
+
+0 0
+
+- -
+
+M1 M1
+
+(34)
+
+M1(t) = M1 + vm t m 1
+
+(35)
+
+aj() = (cos j, sin j, 0)
+
+(36)
+
+Aj(t) = Aj + vj t aj()
+
+(37)
+
+pjd,1 = Aj (tdj,1)
+
+(38)
+
+tbj,1 = tdj,1 + j,1
+
+(39)
+
+pjb,1
+
+= (xjd,1 + vj cos j j,1,
+
+yjd,1 + vj sin j j,1,
+
+zjd,1 -
+
+1 2
+
+gj2,1)
+
+(40)
+
+Cj,1(t) = pjb,1 - (0, 0, vs(t - tbj,1)), t  [tbj,1, tbj,1 + Te]
+
+(41)
+
+j , j  {1, 2, 3}b
+
+7 . 1 . 3 
+  j, k b (42)b
+
+Tcover(x4).
+
+(42)
+
+24
+
+7 . 1 . 4 
+
+7b  7 
+
+      * j , j  {1, 2, 3}.
+
+ 0  j < 2 vmin  vj  vmax
+tjd,1  0 j,1  0 zjb,1  0
+
+7 . 1 . 5  
+
+max Tcover(x4)
+x4
+
+s.t. 0  j < 2,
+
+(43)
+
+vmin  vj  vmax,
+
+tjd,1  0, j,1  0, zjb,1  0,
+
+(
+
+)
+
+j  {1, 2, 3}, x4 = {j}j3=1, {vj}j3=1, {tdj,1}3j=1, {j,1}3j=1 b
+
+7 . 2 
+cGA  b
+
+7 . 2 . 1 
+  b
+ b  Bb
+25
+
+7 . 2 . 2 
+
+b j vj 89b b
+
+ 8 
+
+  ()  (m/s)
+
+FY1
+
+178.8847
+
+101.1553
+
+FY2
+
+233.9977
+
+123.8281
+
+FY3
+
+115.9023
+
+123.7188
+
+ 9 
+
+  1  2  3
+
+ (s) 0.8000 6.5000 21.0000
+
+ (s) 3.3055 7.3000 7.0175
+
+ (s) 4.4750 3.4500 2.7350
+
+ 10.6500sb result2.xlsxb
+7 . 2 . 3 
+ FY1aFY2aFY3  b b  b
+
+a 
+8 . 1  
+baa-b
+
+26
+
+8 . 1 . 1 
+
+ 
+
+x5
+
+=
+
+( {j
+
+}j5=1,
+
+{vj }j5=1 ,
+
+{tdj,k }j5=,31,k=1 ,
+
+{j,k }5j =,31,k=1 )
+
+(44)
+
+8 . 1 . 2  
+
+m i
+
+=
+
+0 0
+
+- -
+
+Mi Mi
+
+(45)
+
+Mi(t) = Mi + vm t m i
+
+(46)
+
+aj() = (cos j, sin j, 0)
+
+(47)
+
+Aj(t) = Aj + vj t aj()
+
+(48)
+
+pdj,k = Aj (tjd,k)
+
+(49)
+
+tbj,k = tjd,k + j,k
+
+(50)
+
+pbj,k
+
+= (xjd,k + vj cos j j,k,
+
+yjd,k + vj sin j j,k,
+
+zjd,k -
+
+1 2
+
+gj2,k
+
+)
+
+(51)
+
+Cj,k(t) = pbj,k - (0, 0, vs(t - tbj,k)), t  [tbj,k, tbj,k + Te]
+
+(52)
+
+i i  {1, 2, 3} j , j  {1, 2, 3, 4, 5} k  k  {1, 2, 3}b
+
+8 . 1 . 3 
+ba 1  bb
+
+tni = tbj,k + nt, n = 0, . . . , N, 
+
+N = Te t
+
+(53)
+
+1,  i ,
+
+i(t) = 0, .
+
+(54)
+
+3  N
+
+Tcover(x5) =
+
+i(tin) t.
+
+(55)
+
+i=1 n=0
+
+27
+
+8 . 1 . 4 
+
+10b
+
+ 10 
+
+      * j  {1, 2, 3, 4, 5}k  {1, 2, 3}
+
+
+0  j < 2 vmin  vj  vmax tjd,k  0, tdj,k+1 - tjd,k  1
+j,k  0 zjb,k  0
+
+8 . 1 . 5  
+
+max Tcover(x5)
+x5
+
+s.t. 0  j < 2,
+
+vmin  vj  vmax,
+
+(56)
+
+tdj,k  0, tdj,k+1 - tdj,k  1,
+
+j,k  0, zjb,k  0,
+
+j  {1, 2, 3, 4, 5}, k  {1, 2, 3}, x5
+
+( = {j}j5=1,
+
+{vj }j5=1 ,
+
+{tjd,k }5j =,31,k=1 ,
+
+{j,k }j5=,31,k=1 )
+
+8 . 2 
+cGA  b
+
+8 . 2 . 1 
+c 40  b
+ 3  
+
+28
+
+b b Bb
+
+8 . 2 . 2 
+
+b  FY1  result3.xlsxb
+ FY1  1 = 179.4571 v1 = 121.5454m/s  FY1 a11b
+ 11 
+
+  1  2  3
+
+ (s) 0.1048 3.1528 5.1522
+
+ (s) 3.4897 4.5851 5.5055
+
+ (s) 3.3500 2.4650 1.0550
+
+ 31.0800sb
+
+8 . 2 . 3 
+12 1  3  FY1  4  6  FY2 b
+
+ 12 
+b  FY1 b b
+ c FY5 b b
+29
+
+a 
+9 . 1  1. b
+ b 2. bc  b
+9 . 2  1. b
+ b
+9 . 3  
+a b
+
+[1] , , , .  [J]. , 2008, (10): 2911-2916.
+[2] , , , , .  [J].  , 2017, (12): 71-74. DOI: 10.16338/j.issn.1009-1319.2017.12.16.
+[3] , , . c[M]. , , 2024.  AI b
+30
+
+ A 
+ 12 
+  result1.xlsx  3  result2.xlsx  4  result3.xlsx  5 
+q1.m  1  q2.m  2  q3.m  3  q3_s.m  3  q4.m  4  q4_s.m  4  q5.m  5  q5_s.m  5 
+
+ B 
+
+ 13  25  GA 
+
+
+1 2 3 4 5 v1 v2 v3 v4 v5 td11 td12 t1d3
+
+ 2  -- -- -- -- 120 -- -- -- -- 1.5 -- --
+
+ 3  -- -- -- -- 120 -- -- -- -- 0 2 4
+
+ 4 
+4.0843 2.0216
+-- -- 100 125 125 -- -- 0.8 -- --
+
+ 5 3.1339 3.8574 1.7040 3.8913 2.1148 121.0000 120.8979 120.5277 114.6142 120.5786
+0.1 3.1 5.1 
+
+31
+
+
+t2d1 td22 td23 td31 td32 t3d3 t4d1 t4d2 td43 td51 td52 t5d3 tb11 t1b2 t1b3 t2b1 tb22 tb23 tb31 tb32 tb33 t4b1 t4b2 t4b3 t5b1 t5b2 t5b3
+
+
+
+
+ 13 ­   2  3
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+3.6
+
+2
+
+--
+
+2
+
+--
+
+2
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+--
+
+GA 
+
+4
+
+8
+
+200 200
+
+500000 5000
+
+ 4 6.5 -- -- 21 -- -- -- -- -- -- -- -- 3.3 -- -- 7.3 -- -- 7 -- -- -- -- -- -- -- --
+12 200 2000
+
+ 5 2.8133 6.4717 8.8673 19.9799 23.4986 28.8131 8.6996 15.6559 16.7156 13.7658 14.7926 20.9975
+3.5 4.5 5.5 6.00 6.25 8.28 4.21 3.78 2.64 12.5674 13.4961 6.67 1.8331 4.8365 1.9457
+40 100 2000
+
+b
+
+32
+
+ C  Matlab 
+ ba B  dt=0.5,hSamp=2,aSamp=4; b
+
+3 . 1  1 
+
+% q1.m FY1_0 = [17800, 0, 1800]; M1_0 = [20000, 0, 2000]; v_M1_speed = 300; v_FY1_speed = 120; t_release = 1.5; t_fuse = 3.6; t_explode = t_release + t_fuse; r_smoke = 10; v_smoke_center = [0,0,-3]; C0 = [0,200,0]; H = 10; R = 7; C1 = C0 + [0,0,H]; g = 9.81; %%  dir_FY1 = ( [0,0,1800] - FY1_0 ); dir_FY1 = dir_FY1 / norm(dir_FY1); v_FY1 = v_FY1_speed * dir_FY1;
+
+%%  pos_release = FY1_0 + v_FY1 * t_release; v_smoke_at_release = v_FY1; t_fall = t_fuse; smoke_center_at_explode = pos_release + v_smoke_at_release * t_fall + 0.5 * [0,0,-g] *
+t_fall^2; v_smoke_at_explode = v_smoke_at_release + [0,0,-g] * t_fall; dir_M1_to_O = ( [0,0,0] - M1_0 ); dir_M1_to_O = dir_M1_to_O / norm(dir_M1_to_O); v_M1 = v_M1_speed * dir_M1_to_O; M1_pos_at_explode = M1_0 + v_M1 * t_explode;
+
+%% 
+
+dt = 0.005;
+
+Tspan = 20;
+
+% c
+
+N = floor(Tspan / dt);
+
+times = (0:N) * dt; %  0  Tspanc
+
+33
+
+M1_traj = zeros(N+1,3); smoke_traj = zeros(N+1,3); cylinder_inside_cone = false(N+1,1);
+M1_traj(1,:) = M1_pos_at_explode; smoke_traj(1,:) = smoke_center_at_explode;
+%%  for n = 2:N+1
+M1_traj(n,:) = M1_traj(n-1,:) + v_M1 * dt; smoke_traj(n,:) = smoke_traj(n-1,:) + v_smoke_center * dt; abs_t = times(n) + t_explode; d = smoke_traj(n,:) - M1_traj(n,:); L = norm(d);
+if L > 0 if L > r_smoke u = d / L; %  alpha = asin(min(1, r_smoke / L)); cylinder_inside_cone(n) = isCylinderInCone(M1_traj(n,:), C0, C1, R, u, alpha); if cylinder_inside_cone(n) abs_t = times(n) + t_explode; end else cylinder_inside_cone(n) = true; end
+else cylinder_inside_cone(n) = true;
+end end
+%% / abs_times = times + t_explode; inside = cylinder_inside_cone; enter_times = []; exit_times = []; state_prev = false;
+for n = 1:length(inside) state = inside(n); if ~state_prev && state if n==1 t_enter = abs_times(n); else t_enter = abs_times(n-1) + dt/2; end enter_times = [enter_times, t_enter];
+34
+
+elseif state_prev && ~state if n==1 t_exit = abs_times(n); else t_exit = abs_times(n-1) + dt/2; end exit_times = [exit_times, t_exit];
+end state_prev = state; end
+%% output if isempty(enter_times)
+fprintf(' %.4f s c %.4f s\n', Tspan, t_explode + Tspan);
+else for k = 1:length(enter_times) fprintf(' %d c: %.4f s\n', k, enter_times(k)); if k <= length(exit_times) fprintf(' %d c: %.4f s\n', k, exit_times(k)); else fprintf('c %.4f s\n', t_explode + Tspan); end end
+end
+
+function isInside = isCylinderInCone(observer_pos, cyl_bottom, cyl_top, cyl_radius, u, alpha)
+
+% c/
+
+%  observer_pos a ua alpha  trueb
+
+% observer_pos -  (1x3)
+
+% cyl_bottom -  (1x3)
+
+% cyl_top -  (1x3)
+
+% cyl_radius -  ()
+
+%u
+
+-  (1x3)
+
+% alpha
+
+- c
+
+insideB = isDiskInCone_exact(observer_pos, cyl_bottom, cyl_radius, u, alpha);
+
+insideT = isDiskInCone_exact(observer_pos, cyl_top, cyl_radius, u, alpha);
+
+isInside = insideB && insideT;
+
+end
+
+function inside = isDiskInCone_exact(V, C, r, u, alpha) tol = 1e-12; negTol = -1e-9;
+w = C(:) - V(:);
+35
+
+s0 = dot(w, u(:)); Ax = u(1); Ay = u(2); A = Ax; B = Ay; C1 = w(1); C2 = w(2); W2 = dot(w,w); k = (cos(alpha))^2;
+amp = r * sqrt(A^2 + B^2); if s0 - amp < -tol
+inside = false; return; end
+%  h(theta) = s(theta)^2 - ||P-V||^2 * cos^2(alpha) %  h = C0 + Cc*cos + Cs*sin + Ccos2*cos2 + Csin2*sin2 C0 = s0^2 - k*(W2 + r^2) + r^2*(A^2 + B^2)/2; Cc = 2*s0*r*A - 2*k*r*C1; Cs = 2*s0*r*B - 2*k*r*C2; Ccos2 = r^2*(A^2 - B^2)/2; Csin2 = r^2*(A*B);
+%  h(theta) * (1+t^2)^2  P(t) = c4 t^4 + c3 t^3 + c2 t^2 + c1 t + c0 c0 = C0 + Cc + Ccos2; c1 = 2*Cs + 4*Csin2; c2 = 2*C0 - 6*Ccos2; c3 = 2*Cs - 4*Csin2; c4 = C0 - Cc + Ccos2;
+%  p = [c4, c3, c2, c1, c0];
+%  -inf ->  if c4 < -tol
+inside = false; return; end
+% c dp = [4*c4, 3*c3, 2*c2, c1]; rts = roots(dp); cand = []; for i = 1:numel(rts)
+if abs(imag(rts(i))) < 1e-8 cand(end+1) = real(rts(i));
+end end %  t=0c theta=0
+36
+
+cand(end+1) = 0;
+%  P  t  if abs(c4) < tol
+T = 1e6; cand(end+1) = T; cand(end+1) = -T; end
+Pvals = polyval(p,cand); Pmin = min(Pvals);
+%  h(theta) = P(t) / (1+t^2)^2>0 P(t)  h(theta)  theta 
+if Pmin < negTol inside = false;
+else inside = true;
+end end
+3 . 2  2 
+%q2.m % : [theta, v_FY1_speed, t_release, t_fuse] % :  clc; clear; close all; %% GA nvars = 4; lb = [0, 70, 0, 0]; %  ub = [2*pi, 140, 40, 40]; %  theta0 = phi;%FY1 v0 = 120; t_release0 = 1.5; t_fuse0 = 3.6;
+populationSize = 200; InitialPopulationMatrix = zeros(populationSize, nvars); InitialPopulationMatrix(1,:) = [theta0, v0, t_release0, t_fuse0]; for i = 2:populationSize
+InitialPopulationMatrix(i,:) = lb + rand(1,4).*(ub-lb); end
+options = optimoptions('ga','Display','iter','MaxGenerations',500000,'PopulationSize',... populationSize,'InitialPopulationMatrix',InitialPopulationMatrix);
+37
+
+[x_opt,fval] = ga(@(x) -w(x), nvars, [],[],[],[], lb, ub, [], options);
+
+fprintf('\\n: theta=%.4f rad, v_FY1=%.4f m/s, t_release=%.4f s, t_fuse=%.4f s\\n',...
+
+x_opt(1), x_opt(2), x_opt(3), x_opt(4));
+
+fprintf(' = %.4f s\\n', -fval);
+
+%% 
+
+function Tcover = w(x)
+
+theta
+
+= x(1);
+
+v_FY1_speed = x(2);
+
+t_release = x(3);
+
+t_fuse
+
+= x(4);
+
+FY1_0 = [17800, 0, 1800]; M1_0 = [20000, 0, 2000]; v_M1_speed = 300;
+
+r_smoke = 10; v_smoke_center = [0,0,-3]; C0 = [0,200,0]; H = 10; R = 7; C1 = C0 + [0,0,H]; g = 9.81;
+
+dir_FY1 = [cos(theta), sin(theta), 0]; v_FY1 = v_FY1_speed * dir_FY1;
+
+pos_release = FY1_0 + v_FY1 * t_release; v_smoke_at_release = v_FY1;
+
+t_explode = t_release + t_fuse; smoke_center_at_explode = pos_release + v_smoke_at_release*t_fuse + 0.5*[0,0,-g]*t_fuse^2;
+
+dir_M1 = ([0,0,0] - M1_0); dir_M1 = dir_M1 / norm(dir_M1); v_M1 = v_M1_speed * dir_M1; M1_pos_at_explode = M1_0 + v_M1*t_explode;
+
+dt = 0.005; Tspan = 20; N = floor(Tspan/dt); M1_pos = M1_pos_at_explode; smoke_pos = smoke_center_at_explode;
+
+covered = false(N,1);
+
+for n=1:N M1_pos = M1_pos + v_M1*dt; smoke_pos = smoke_pos + v_smoke_center*dt;
+
+38
+
+d = smoke_pos - M1_pos; L = norm(d); if L > r_smoke
+u = d/L; alpha = asin(min(1,r_smoke/L)); covered(n) = isCylinderInCone(M1_pos,C0,C1,R,u,alpha); else covered(n) = true; end end
+
+Tcover = sum(covered)*dt; end
+
+function isInside = isCylinderInCone(observer_pos, cyl_bottom, cyl_top, cyl_radius, u, alpha)
+
+% c/
+
+%  observer_pos a ua alpha  trueb
+
+% observer_pos -  (1x3)
+
+% cyl_bottom -  (1x3)
+
+% cyl_top -  (1x3)
+
+% cyl_radius -  ()
+
+%u
+
+-  (1x3)
+
+% alpha
+
+- c
+
+insideB = isDiskInCone_exact(observer_pos, cyl_bottom, cyl_radius, u, alpha);
+
+insideT = isDiskInCone_exact(observer_pos, cyl_top, cyl_radius, u, alpha);
+
+isInside = insideB && insideT;
+
+end
+
+function inside = isDiskInCone_exact(V, C, r, u, alpha) tol = 1e-12; negTol = -1e-9;
+w = C(:) - V(:); s0 = dot(w, u(:)); Ax = u(1); Ay = u(2); A = Ax; B = Ay; C1 = w(1); C2 = w(2); W2 = dot(w,w); k = (cos(alpha))^2;
+amp = r * sqrt(A^2 + B^2); if s0 - amp < -tol
+inside = false; return; end
+39
+
+%  h(theta) = s(theta)^2 - ||P-V||^2 * cos^2(alpha) %  h = C0 + Cc*cos + Cs*sin + Ccos2*cos2 + Csin2*sin2 C0 = s0^2 - k*(W2 + r^2) + r^2*(A^2 + B^2)/2; Cc = 2*s0*r*A - 2*k*r*C1; Cs = 2*s0*r*B - 2*k*r*C2; Ccos2 = r^2*(A^2 - B^2)/2; Csin2 = r^2*(A*B);
+%  h(theta) * (1+t^2)^2  P(t) = c4 t^4 + c3 t^3 + c2 t^2 + c1 t + c0 c0 = C0 + Cc + Ccos2; c1 = 2*Cs + 4*Csin2; c2 = 2*C0 - 6*Ccos2; c3 = 2*Cs - 4*Csin2; c4 = C0 - Cc + Ccos2;
+%  p = [c4, c3, c2, c1, c0];
+%  -inf ->  if c4 < -tol
+inside = false; return; end
+% c dp = [4*c4, 3*c3, 2*c2, c1]; rts = roots(dp); cand = []; for i = 1:numel(rts)
+if abs(imag(rts(i))) < 1e-8 cand(end+1) = real(rts(i));
+end end %  t=0c theta=0 cand(end+1) = 0;
+%  P  t  if abs(c4) < tol
+T = 1e6; cand(end+1) = T; cand(end+1) = -T; end
+Pvals = polyval(p, cand); Pmin = min(Pvals);
+40
+
+%  h(theta) = P(t) / (1+t^2)^2>0 P(t)  h(theta)  theta 
+if Pmin < negTol inside = false;
+else inside = true;
+end end
+Optimization terminated: average change in the fitness value less than options.FunctionTolerance.
+\n: theta=3.1230 rad, v_FY1=99.2020 m/s, t_release=0.8094 s, t_fuse=3.3250 s\n = 4.5000 s\n>>
+3 . 3  3 
+% q3.m % : [theta, v_FY1_speed, t_release0, t_fuse0, t_release1, t_fuse1, t_release2, t_fuse2] clc; clear; close all;
+%% GA nvars = 8; lb = [0, 70, 0, 0, 0, 0, 0, 0]; ub = [2*pi, 140, 40, 40, 40, 40, 40, 40];
+theta0 = pi; v_FY1_speed0 = 120; t_release0 = 0; t_fuse0 = 2;
+populationSize = 200; initPop = zeros(populationSize, nvars); initPop(1,:) = [theta0, v_FY1_speed0, t_release0, t_fuse0, t_release0+2, t_fuse0,
+t_release0+4, t_fuse0];
+A = [0,0,1,0,-1,0,0,0; 0,0,0,0,1,0,-1,0];
+b = [-1; -1]; % t2 - t1 >= 1, t3 - t2 >= 1
+opts = optimoptions('ga','Display','iter','MaxGenerations',5000,... 'PopulationSize',populationSize,'InitialPopulationMatrix',initPop);
+[x_opt,fval] = ga(@(x) -calcCoverage(x), nvars, A, b, [], [], lb, ub, [], opts);
+fprintf('\n:\n');
+41
+
+fprintf('theta = %.4f rad\n', x_opt(1)); fprintf('v_FY1 = %.4f m/s\n', x_opt(2)); for i = 1:3
+fprintf('%d: t_release = %.4f s, t_fuse = %.4f s\n', i, x_opt(2*i+1), x_opt(2*i+2)); end fprintf(' = %.4f s\n', -fval);
+
+%% 
+
+function Tcover = calcCoverage(x)
+
+theta
+
+= x(1);
+
+v_FY1_speed = x(2);
+
+t_release = [x(3), x(5), x(7)];
+
+t_fuse
+
+= [x(4), x(6), x(8)];
+
+FY1_0 = [17800,0,1800]; M1_0 = [20000,0,2000]; v_M1 = 300;
+
+rSmoke = 10; g = 9.81;
+
+cylBot = [0,200,0]; H = 10; R = 7; cylTop = cylBot + [0,0,H];
+
+dir_FY1 = [cos(theta), sin(theta), 0]; v_FY1 = v_FY1_speed * dir_FY1;
+
+smokes = cell(1,3); for i = 1:3
+posRel = FY1_0 + v_FY1 * t_release(i); posExp = posRel + v_FY1 * t_fuse(i) + 0.5*[0,0,-g]*t_fuse(i)^2; tExp = t_release(i) + t_fuse(i); smokes{i} = struct('time', tExp, 'pos', posExp); end
+
+tStart = min(cellfun(@(s) s.time, smokes)); tEnd = min(max(cellfun(@(s) s.time, smokes)) + 20, 67);
+
+dir_M1 = -M1_0; dir_M1 = dir_M1/norm(dir_M1); vM1 = v_M1 * dir_M1;
+
+dt = 0.005; N = floor((tEnd - tStart)/dt); covered = false(N,1);
+
+for n = 1:N tCur = tStart + n*dt; M1_pos = M1_0 + vM1 * tCur;
+
+42
+
+if cylCovered(M1_pos, cylBot, cylTop, R, smokes, tCur, rSmoke) covered(n) = true;
+end end
+Tcover = sum(covered)*dt; end
+%%  function covered = cylCovered(obsPos, cylBot, cylTop, cylR, smokes, tCur, rSmoke)
+persistent samplePts cylBotP cylTopP cylRP if isempty(samplePts) || any(cylBot ~= cylBotP) || any(cylTop ~= cylTopP) || cylR ~= cylRP
+hSamp = 40; aSamp = 16; [hGrid,aGrid] = meshgrid(0:hSamp, 0:aSamp-1);
+posH = cylBot + (hGrid(:)/hSamp).*(cylTop - cylBot); ang = 2*pi*aGrid(:)/aSamp;
+samplePts = [cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)];
+cylBotP = cylBot; cylTopP = cylTop; cylRP = cylR; end
+for i = 1:size(samplePts,1) if ~pointCovered(obsPos, samplePts(i,:), smokes, tCur, rSmoke) covered = false; return; end
+end covered = true; end
+%%  function covered = pointCovered(obsPos, pt, smokes, tCur, rSmoke)
+covered = false; for i = 1:numel(smokes)
+tExp = smokes{i}.time; if tCur >= tExp && tCur <= tExp + 20
+smokeC = smokes{i}.pos + [0,0,-3]*(tCur - tExp); if lineIntersectSphere(obsPos, pt, smokeC, rSmoke)
+covered = true; return; end end end end
+43
+
+%%  function intersect = lineIntersectSphere(A,B,C,r)
+AB = B - A; AC = C - A; t = dot(AB,AC)/dot(AB,AB); t = max(0,min(1,t)); closest = A + t*AB; intersect = norm(closest - C) <= r; end
+
+:  theta = 3.1339 rad  v_FY1 = 121.2417 m/s 1:  = 0.0993 s,  = 3.4747 s 2:  = 3.1929 s,  = 4.8082 s 3:  = 5.1680 s,  = 5.4649 s  = 6.8800 s
+
+3 . 4  3 
+
+% q3_s.m clc; clear; close all;
+
+%% 
+
+theta
+
+= 3.13386577744472;
+
+v_FY1
+
+= 121.241733878003;
+
+t_release = [0.0993010070499214, 3.19287468517247, 5.16803229288553];
+
+t_fuse = [3.47468751782884, 4.80818456582672, 5.46485872367104];
+
+FY1_0 = [17800,0,1800];
+
+M1_0 = [20000,0,2000];
+
+v_M1 = 300;
+
+rSmoke = 10;
+
+vSmoke = [0,0,-3];
+
+g
+
+= 9.81;
+
+cylBot = [0,200,0];
+
+H
+
+= 10; R = 7;
+
+cylTop = cylBot + [0,0,H];
+
+maxDur = 20;
+
+%% FY1 
+
+dir_FY1 = [cos(theta), sin(theta), 0];
+
+vVec_FY1 = v_FY1 * dir_FY1;
+
+44
+
+%%  numBombs = length(t_release); explosions = cell(1,numBombs); for i = 1:numBombs
+posRel = FY1_0 + vVec_FY1 * t_release(i); tExp = t_release(i) + t_fuse(i); posExp = posRel + vVec_FY1*t_fuse(i) + 0.5*[0,0,-g]*t_fuse(i)^2; explosions{i} = struct('time', tExp, 'pos', posExp, 'dur', maxDur); end
+%% M1  dir_M1 = -M1_0/norm(M1_0); vVec_M1 = v_M1 * dir_M1;
+%%  dt = 0.005; Tcover_ray = zeros(numBombs,1); Tcover_cone = zeros(numBombs,1); tVec_bomb = cell(numBombs,1); cov_ray_bomb = cell(numBombs,1); cov_cone_bomb = cell(numBombs,1);
+for i = 1:numBombs exp = explosions{i}; t0 = exp.time; tVec = t0:dt:(t0 + exp.dur); N = length(tVec);
+cov_ray = false(N,1); cov_cone = false(N,1); singleExp = { struct('time',exp.time,'pos',exp.pos,'dur',exp.dur) };
+for n = 1:N tCur = tVec(n); M1_pos = M1_0 + vVec_M1 * tCur;
+cov_ray(n) = cylCoveredRay(M1_pos, cylBot, cylTop, R, singleExp, tCur, rSmoke);
+smokePos = exp.pos + vSmoke*(tCur - exp.time); L = norm(smokePos - M1_pos); if L > rSmoke
+u = (smokePos - M1_pos)/L; alpha = asin(min(1,rSmoke/L)); cov_cone(n) = cylInCone(M1_pos, cylBot, cylTop, R, u, alpha); else cov_cone(n) = true; end
+45
+
+end
+Tcover_ray(i) = sum(cov_ray)*dt; Tcover_cone(i) = sum(cov_cone)*dt; tVec_bomb{i} = tVec; cov_ray_bomb{i} = cov_ray; cov_cone_bomb{i} = cov_cone; end
+%%  fprintf('\n'); for i = 1:numBombs
+fprintf(' %d: tExp = %.4f s, pos = [%.4f, %.4f, %.4f]\n', ... i, explosions{i}.time, explosions{i}.pos);
+fprintf('  : %.4f s\n', Tcover_ray(i)); fprintf('  : %.4f s\n', Tcover_cone(i)); end
+%%  figure('Name','','NumberTitle','off','Position',[100 100 1000 600]); tiledlayout(2,numBombs,'Padding','compact','TileSpacing','compact'); for i = 1:numBombs
+nexttile(i); stairs(tVec_bomb{i}, double(cov_ray_bomb{i}),'LineWidth',1.2); title(sprintf(' %d - ', i)); xlabel('(s)'); ylabel(''); ylim([-0.1 1.1]);
+grid on;
+nexttile(i+numBombs); stairs(tVec_bomb{i}, double(cov_cone_bomb{i}),'LineWidth',1.2); title(sprintf(' %d - ', i)); xlabel('(s)'); ylabel(''); ylim([-0.1 1.1]);
+grid on; end
+function covered = cylCoveredRay(obsPos, cylBot, cylTop, cylR, explosions, tCur, rSmoke) persistent sampPts cylBotP cylTopP cylRP if isempty(sampPts) || any(cylBot ~= cylBotP) || any(cylTop ~= cylTopP) || cylR ~= cylRP hSamp = 40; aSamp = 16; [aGrid,hGrid] = meshgrid(0:aSamp-1, 0:hSamp); ang = 2*pi*aGrid(:)/aSamp; heights = hGrid(:)/hSamp; posH = cylBot + heights.*(cylTop-cylBot); sampPts = [cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)]; cylBotP = cylBot; cylTopP = cylTop; cylRP = cylR; end covered = true; for i = 1:size(sampPts,1) if ~pointCovered(obsPos, sampPts(i,:), explosions, tCur, rSmoke)
+46
+
+covered = false; return; end end end
+function covered = pointCovered(obsPos, pt, explosions, tCur, rSmoke) covered = false; for i = 1:numel(explosions) tExp = explosions{i}.time; dur = explosions{i}.dur; if tCur >= tExp && tCur <= tExp+dur smokePos = explosions{i}.pos + [0,0,-3]*(tCur-tExp); if lineIntersectSphere(obsPos, pt, smokePos, rSmoke) covered = true; return; end end end
+end
+function intersect = lineIntersectSphere(A,B,C,r) AB = B - A; if all(AB==0) intersect = norm(A-C) <= r; return; end t = dot(AB,C-A)/dot(AB,AB); t = max(0,min(1,t)); closest = A + t*AB; intersect = norm(closest - C) <= r;
+end
+function inside = cylInCone(obsPos, cylBot, cylTop, cylR, u, alpha) inside = isDiskInCone(obsPos, cylBot, cylR, u, alpha) && isDiskInCone(obsPos, cylTop, cylR, u, alpha);
+end
+function inside = isDiskInCone(V, C, r, u, alpha) tol = 1e-12; negTol = -1e-9;
+w = C(:) - V(:); s0 = dot(w, u(:)); Ax = u(1); Ay = u(2); A = Ax; B = Ay; C1 = w(1); C2 = w(2); W2 = dot(w,w); k = (cos(alpha))^2;
+47
+
+amp = r * sqrt(A^2 + B^2); if s0 - amp < -tol
+inside = false; return; end
+%  h(theta) = s(theta)^2 - ||P-V||^2 * cos^2(alpha) %  h = C0 + Cc*cos + Cs*sin + Ccos2*cos2 + Csin2*sin2 C0 = s0^2 - k*(W2 + r^2) + r^2*(A^2 + B^2)/2; Cc = 2*s0*r*A - 2*k*r*C1; Cs = 2*s0*r*B - 2*k*r*C2; Ccos2 = r^2*(A^2 - B^2)/2; Csin2 = r^2*(A*B);
+%  h(theta) * (1+t^2)^2  P(t) = c4 t^4 + c3 t^3 + c2 t^2 + c1 t + c0 c0 = C0 + Cc + Ccos2; c1 = 2*Cs + 4*Csin2; c2 = 2*C0 - 6*Ccos2; c3 = 2*Cs - 4*Csin2; c4 = C0 - Cc + Ccos2;
+%  p = [c4, c3, c2, c1, c0];
+%  -inf ->  if c4 < -tol
+inside = false; return; end
+% c dp = [4*c4, 3*c3, 2*c2, c1]; rts = roots(dp); cand = []; for i = 1:numel(rts)
+if abs(imag(rts(i))) < 1e-8 cand(end+1) = real(rts(i));
+end end %  t=0c theta=0 cand(end+1) = 0;
+%  P  t  if abs(c4) < tol
+T = 1e6; cand(end+1) = T; cand(end+1) = -T;
+48
+
+end
+Pvals = polyval(p, cand); Pmin = min(Pvals);
+%  h(theta) = P(t) / (1+t^2)^2>0 P(t)  h(theta)  theta 
+if Pmin < negTol inside = false;
+else inside = true;
+end end ---  -- 1: tExp = 3.5740 s, pos = [17366.6964, 3.3482, 1740.7797]
+ : 3.4200 s  : 3.4200 s  2: tExp = 8.0011 s, pos = [16829.9667, 7.4955, 1686.6031]  : 2.6400 s  : 2.6400 s  3: tExp = 10.6329 s, pos = [16510.8883, 9.9610, 1653.5137]  : 1.0600 s  : 1.0600 s
+3 . 5  4 
+% q4.m clc; clear; close all; %% GA numVars = 12; % [theta1,v1,tR1,tF1, theta2,v2,tR2,tF2, theta3,v3,tR3,tF3] lb = [0,70,0,0, 0,70,0,0, 0,70,0,0]; ub = [2*pi,140,40,40, 2*pi,140,40,40, 2*pi,140,40,40]; theta0 = pi; theta1 = 4.0843; theta2 = 2.0216; v0 = 100; v1 = 125; v2 = 125; tR0 = 0.8; tF0 = 3.3; tR1 = 6.5; tF1 = 7.3; tR2 = 21; tF2 = 7;
+49
+
+popSize = 200; initPop = zeros(popSize,numVars); initPop(1,:) = [theta0,v0,tR0,tF0, theta1,v1,tR1,tF1, theta2,v2,tR2,tF2]; gaOpts = optimoptions('ga', 'Display','iter', 'MaxGenerations',2000, ...
+'PopulationSize',popSize, 'InitialPopulationMatrix',initPop);
+[optSol, optVal] = ga(@(x) -multiSmokeCovTime(x), numVars, [], [], [], [], lb, ub, [], gaOpts);
+fprintf('\n:\n'); for uav = 1:3
+fprintf('%d:  = %.4f rad, v = %.4f m/s,  = %.4f s,  = %.4f s\n', ... uav, optSol(4*(uav-1)+1), optSol(4*(uav-1)+2), ... optSol(4*(uav-1)+3), optSol(4*(uav-1)+4));
+end fprintf(' = %.4f s\n', -optVal);
+%%  function covTime = multiSmokeCovTime(vars)
+posUAV = {[17800,0,1800], [12000,1400,1400], [6000,-3000,700]}; g = 9.81; rSmoke = 10;
+cylBot = [0,200,0]; cylH = 10; cylR = 7; cylTop = cylBot + [0,0,cylH];
+explosions = cell(1,3); for uav = 1:3
+theta = vars(4*(uav-1)+1); v = vars(4*(uav-1)+2); tR = vars(4*(uav-1)+3); tF = vars(4*(uav-1)+4);
+dir = [cos(theta), sin(theta), 0]; vVec = v*dir; relPos = posUAV{uav} + vVec*tR; expPos = relPos + vVec*tF + 0.5*[0,0,-g]*tF^2; expTime = tR + tF;
+explosions{uav} = struct('time',expTime,'pos',expPos); end
+% M1 posM1 = [20000,0,2000]; vM1 = 300; dirM1 = -posM1/norm(posM1); vVecM1 = vM1*dirM1;
+50
+
+%  tStart = min(cellfun(@(s) s.time, explosions)); tEnd = min(max(cellfun(@(s) s.time, explosions))+20, 67); dt = 0.005; Nsteps = floor((tEnd-tStart)/dt); covered = false(Nsteps,1);
+for i = 1:Nsteps tCur = tStart + i*dt; posCur = posM1 + vVecM1*tCur; if cylCovered(posCur, cylBot, cylTop, cylR, explosions, tCur, rSmoke) covered(i) = true; end
+end
+covTime = sum(covered)*dt; end
+%%  function covered = cylCovered(obsPos, cylBot, cylTop, cylR, explosions, tCur, rSmoke)
+persistent sampPts cylBotP cylTopP cylRP if isempty(sampPts) || any(cylBot~=cylBotP) || any(cylTop~=cylTopP) || cylR~=cylRP
+nH = 2; nA = 4; [hG,aG] = meshgrid(0:nH,0:nA-1); heights = hG(:)/nH; posH = cylBot + heights.*(cylTop-cylBot); ang = 2*pi*aG(:)/nA; sampPts = [cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)]; cylBotP = cylBot; cylTopP = cylTop; cylRP = cylR; end covered = true; for i = 1:size(sampPts,1) if ~pointCovered(obsPos, sampPts(i,:), explosions, tCur, rSmoke)
+covered = false; return; end end end
+function covered = pointCovered(obsPos, pt, explosions, tCur, rSmoke) covered = false; for i = 1:numel(explosions) tExp = explosions{i}.time; if tCur>=tExp && tCur<=tExp+20 smokePos = explosions{i}.pos + [0,0,-3]*(tCur-tExp); if lineIntersectSphere(obsPos, pt, smokePos, rSmoke) covered = true; return; end
+51
+
+end end end
+function intersect = lineIntersectSphere(A,B,C,r) AB = B-A; AC = C-A; t = dot(AB,AC)/dot(AB,AB); t = max(0,min(1,t)); closest = A + t*AB; intersect = norm(closest-C) <= r;
+end
+: 1:  = 3.1221 rad, v = 101.1553 m/s,  = 0.8000 s,  = 3.3055 s 2:  = 4.0843 rad, v = 123.8281 m/s,  = 6.5000 s,  = 7.3000 s 3:  = 2.0231 rad, v = 123.7188 m/s,  = 21.0000 s,  = 7.0175 s  = 10.65 s
+3 . 6  4 
+% q4_s.m clc; clear; close all;
+%%  theta = [3.1221, 4.0843, 2.0231]; v_FY = [101.1553, 123.8281, 123.7188]; t_release = [0.8000, 6.5000, 21.0000]; t_fuse = [3.3055, 7.3000, 7.0175]; FY0 = { [17800,0,1800], [12000,1400,1400], [6000,-3000,700] }; M1_0 = [20000,0,2000]; v_M1 = 300; rSmoke = 10; vSmoke = [0,0,-3]; g = 9.81; maxDur = 20; cylBot = [0,200,0]; H = 10; R = 7; cylTop = cylBot + [0,0,H];
+%%  numBombs = 3; explosions = cell(1,numBombs); for i = 1:numBombs
+dir_FY = [cos(theta(i)), sin(theta(i)), 0];
+52
+
+vVec_FY = v_FY(i) * dir_FY; posRel = FY0{i} + vVec_FY * t_release(i); tExp = t_release(i) + t_fuse(i); posExp = posRel + vVec_FY * t_fuse(i) + 0.5*[0,0,-g]*t_fuse(i)^2; explosions{i} = struct('time', tExp, 'pos', posExp, 'dur', maxDur); end
+%% M1  dir_M1 = -M1_0 / norm(M1_0); vVec_M1 = v_M1 * dir_M1;
+%%  dt = 0.005; Tcover_ray = zeros(numBombs,1); Tcover_cone = zeros(numBombs,1); tVec_bomb = cell(numBombs,1); cov_ray_bomb = cell(numBombs,1); cov_cone_bomb = cell(numBombs,1);
+for i = 1:numBombs exp = explosions{i}; t0 = exp.time; tVec = t0:dt:(t0+exp.dur); N = length(tVec);
+cov_ray = false(N,1); cov_cone = false(N,1); singleExp = { struct('time',exp.time,'pos',exp.pos,'dur',exp.dur) };
+for n = 1:N tCur = tVec(n); M1_pos = M1_0 + vVec_M1 * tCur;
+%  cov_ray(n) = cylCoveredRay(M1_pos, cylBot, cylTop, R, singleExp, tCur, rSmoke);
+%  smokePos = exp.pos + vSmoke*(tCur - exp.time); L = norm(smokePos - M1_pos); if L > rSmoke
+u = (smokePos - M1_pos)/L; alpha = asin(min(1,rSmoke/L)); cov_cone(n) = cylInCone(M1_pos, cylBot, cylTop, R, u, alpha); else cov_cone(n) = true; end end
+53
+
+Tcover_ray(i) = sum(cov_ray)*dt; Tcover_cone(i) = sum(cov_cone)*dt; tVec_bomb{i} = tVec; cov_ray_bomb{i} = cov_ray; cov_cone_bomb{i} = cov_cone; end
+%%  for i = 1:numBombs
+fprintf(' %d: tExp = %.4f s, pos = [%.4f, %.4f, %.4f]\n', ... i, explosions{i}.time, explosions{i}.pos);
+fprintf('  : %.4f s\n', Tcover_ray(i)); fprintf('  : %.4f s\n', Tcover_cone(i)); end
+%%  figure('Name',' - ','NumberTitle','off','Position',[100 100 1000 600]); tiledlayout(2,numBombs,'Padding','compact','TileSpacing','compact'); for i = 1:numBombs
+nexttile(i); stairs(tVec_bomb{i}, double(cov_ray_bomb{i}),'LineWidth',1.2); title(sprintf(' %d - ', i)); xlabel('(s)'); ylabel(''); ylim([-0.1 1.1]); grid on;
+nexttile(i+numBombs); stairs(tVec_bomb{i}, double(cov_cone_bomb{i}),'LineWidth',1.2); title(sprintf(' %d - ', i)); xlabel('(s)'); ylabel(''); ylim([-0.1 1.1]); grid on; end
+%% =====  ===== function covered = cylCoveredRay(obsPos, cylBot, cylTop, cylR, explosions, tCur, rSmoke)
+persistent sampPts cylBotP cylTopP cylRP if isempty(sampPts) || any(cylBot ~= cylBotP) || any(cylTop ~= cylTopP) || cylR ~= cylRP
+hSamp = 40; aSamp = 16; [aGrid,hGrid] = meshgrid(0:aSamp-1, 0:hSamp); ang = 2*pi*aGrid(:)/aSamp; heights = hGrid(:)/hSamp; posH = cylBot + heights.*(cylTop-cylBot); sampPts = [cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)]; cylBotP = cylBot; cylTopP = cylTop; cylRP = cylR; end covered = true; for i = 1:size(sampPts,1) if ~pointCovered(obsPos, sampPts(i,:), explosions, tCur, rSmoke)
+covered = false; return;
+54
+
+end end end
+function covered = pointCovered(obsPos, pt, explosions, tCur, rSmoke) covered = false; for i = 1:numel(explosions) tExp = explosions{i}.time; dur = explosions{i}.dur; if tCur >= tExp && tCur <= tExp+dur smokePos = explosions{i}.pos + [0,0,-3]*(tCur-tExp); if lineIntersectSphere(obsPos, pt, smokePos, rSmoke) covered = true; return; end end end
+end
+function intersect = lineIntersectSphere(A,B,C,r) AB = B - A; if all(AB==0) intersect = norm(A-C) <= r; return; end t = dot(AB,C-A)/dot(AB,AB); t = max(0,min(1,t)); closest = A + t*AB; intersect = norm(closest - C) <= r;
+end
+function inside = cylInCone(obsPos, cylBot, cylTop, cylR, u, alpha) inside = isDiskInCone(obsPos, cylBot, cylR, u, alpha) && isDiskInCone(obsPos, cylTop, cylR, u, alpha);
+end
+function inside = isDiskInCone(V, C, r, u, alpha) tol = 1e-12; negTol = -1e-9;
+w = C(:) - V(:); s0 = dot(w, u(:)); Ax = u(1); Ay = u(2); A = Ax; B = Ay; C1 = w(1); C2 = w(2); W2 = dot(w,w); k = (cos(alpha))^2;
+amp = r * sqrt(A^2 + B^2);
+55
+
+if s0 - amp < -tol inside = false; return;
+end
+%  h(theta) = s(theta)^2 - ||P-V||^2 * cos^2(alpha) %  h = C0 + Cc*cos + Cs*sin + Ccos2*cos2 + Csin2*sin2 C0 = s0^2 - k*(W2 + r^2) + r^2*(A^2 + B^2)/2; Cc = 2*s0*r*A - 2*k*r*C1; Cs = 2*s0*r*B - 2*k*r*C2; Ccos2 = r^2*(A^2 - B^2)/2; Csin2 = r^2*(A*B);
+%  h(theta) * (1+t^2)^2  P(t) = c4 t^4 + c3 t^3 + c2 t^2 + c1 t + c0 c0 = C0 + Cc + Ccos2; c1 = 2*Cs + 4*Csin2; c2 = 2*C0 - 6*Ccos2; c3 = 2*Cs - 4*Csin2; c4 = C0 - Cc + Ccos2;
+%  p = [c4, c3, c2, c1, c0];
+%  -inf ->  if c4 < -tol
+inside = false; return; end
+% c dp = [4*c4, 3*c3, 2*c2, c1]; rts = roots(dp); cand = []; for i = 1:numel(rts)
+if abs(imag(rts(i))) < 1e-8 cand(end+1) = real(rts(i));
+end end %  t=0c theta=0 cand(end+1) = 0;
+%  P  t  if abs(c4) < tol
+T = 1e6; cand(end+1) = T; cand(end+1) = -T; end
+56
+
+Pvals = polyval(p, cand); Pmin = min(Pvals);
+%  h(theta) = P(t) / (1+t^2)^2>0 P(t)  h(theta)  theta 
+if Pmin < negTol inside = false;
+else inside = true;
+end end
+ 1:  = 4.1055 s,  = [17384.7858, 8.0947, 1746.4064]  : 4.4700 s  : 4.4700 s
+ 2:  = 13.8000 s,  = [10995.8936, 17.2988, 1138.6126]  : 3.4500 s  : 3.4500 s
+ 3:  = 28.0175 s,  = [4485.0964, 117.7306, 458.4518]  : 2.7300 s  : 2.7300 s
+3 . 7  5 
+% q5.m clc; clear; close all;
+%% GA nUAV = 5; nBomb = 3; varsPerUAV = 8; nvars = nUAV * varsPerUAV; % 8 : [theta, v, t_release1, t_fuse1, t_release2, t_fuse2, t_release3, t_fuse3] initGuess = [
+3.1339, 121, 0.1, 3.5, 3.1, 4.5, 5.1, 5.5; 3.8574, 120.8979, 2.8133, 6.00, 6.4717, 6.25, 8.8673, 8.28; 1.7040, 120.5277, 19.9799, 4.21, 23.4986, 3.78, 28.8131, 2.64; 3.8913, 114.6142, 8.6996, 12.5674, 15.6559, 13.4961, 16.7156, 6.67; 2.1148, 120.5786, 13.7658, 1.8331 , 14.7926, 4.8365, 20.9975, 1.9457; ]; x0 = reshape(initGuess.', 1, []);
+lb = repmat([0, 70, 0, 0, 0, 0, 0, 0], 1, nUAV);
+57
+
+ub = repmat([2*pi, 140, 40, 40, 40, 40, 40, 40], 1, nUAV);
+%%  populationSize = 100; initPop = zeros(populationSize, nvars); initPop(1,:) = x0;
+%%  A = zeros(nUAV*2, nvars); b = -ones(nUAV*2, 1);
+for u = 0:nUAV-1 base = u*varsPerUAV; row1 = u*2+1; A(row1, base+3) = 1; % t1 A(row1, base+5) = -1; % t2
+row2 = u*2+2; A(row2, base+5) = 1; % t2 A(row2, base+7) = -1; % t3 end
+%% GA  opts = optimoptions('ga','Display','iter',...
+'MaxGenerations',2000,'PopulationSize',populationSize,... 'InitialPopulationMatrix',initPop);
+[x_opt, fval] = ga(@(x) -multiUAVCoverage(x), nvars, A, b, [], [], lb, ub, [], opts);
+fprintf('\n:\n'); for u=1:nUAV
+idx = (u-1)*varsPerUAV; fprintf('UAV%d: theta=%.4f rad, v=%.4f m/s\n', u, x_opt(idx+1), x_opt(idx+2)); for k=1:nBomb
+fprintf(' %d: =%.4f s, =%.4f s\n', k, x_opt(idx+2*k+1), x_opt(idx+2*k+2)); end end fprintf(' = %.4f s\n', -fval);
+%%  function TcoverTotal = multiUAVCoverage(x)
+FY0 = [17800,0,1800; 12000,1400,1400; 6000,-3000,700; 11000,2000,1800; 13000,-2000,1300];
+58
+
+M0 = [20000,0,2000; 19000,600,2100; 18000,-600,1900];
+vM = 300;
+cylBot = [0,200,0]; H=10; R=7; cylTop = cylBot+[0,0,H]; rSmoke = 10; g=9.81;
+nUAV=5; nBomb=3; varsPerUAV=8; smokes = {};
+for u=1:nUAV base = (u-1)*varsPerUAV; theta = x(base+1); v_speed = x(base+2); dir = [cos(theta),sin(theta),0]; vUAV = v_speed * dir; pos0 = FY0(u,:);
+for k=1:nBomb t_release = x(base+2*k+1); t_fuse = x(base+2*k+2); posRel = pos0 + vUAV*t_release; posExp = posRel + vUAV*t_fuse + 0.5*[0,0,-g]*t_fuse^2; tExp = t_release+t_fuse; smokes{end+1} = struct('time',tExp,'pos',posExp);
+end end
+TcoverTotal = 0; for m=1:3
+dirM = -M0(m,:); dirM=dirM/norm(dirM); vMvec = vM*dirM;
+tStart = min(cellfun(@(s) s.time, smokes)); tEnd = min(max(cellfun(@(s) s.time, smokes))+20,67); dt=0.005; N=floor((tEnd-tStart)/dt); covered=false(N,1);
+for n=1:N tCur = tStart+n*dt; Mpos = M0(m,:) + vMvec*tCur; if cylCovered(Mpos,cylBot,cylTop,R,smokes,tCur,rSmoke) covered(n)=true; end
+end TcoverTotal = TcoverTotal + sum(covered)*dt;
+59
+
+end end
+%%  function covered = cylCovered(obsPos,cylBot,cylTop,cylR,smokes,tCur,rSmoke)
+persistent sampPts cylBotP cylTopP cylRP if isempty(sampPts) || any(cylBot~=cylBotP) || any(cylTop~=cylTopP) || cylR~=cylRP
+hSamp=40; aSamp=16; [hGrid,aGrid]=meshgrid(0:hSamp,0:aSamp-1); posH=cylBot+(hGrid(:)/hSamp).*(cylTop-cylBot); ang=2*pi*aGrid(:)/aSamp; sampPts=[cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)]; cylBotP=cylBot; cylTopP=cylTop; cylRP=cylR; end for i=1:size(sampPts,1) if ~pointCovered(obsPos,sampPts(i,:),smokes,tCur,rSmoke)
+covered=false; return; end end covered=true; end
+function covered = pointCovered(obsPos,pt,smokes,tCur,rSmoke) covered=false; for i=1:numel(smokes) tExp=smokes{i}.time; if tCur>=tExp && tCur<=tExp+20 smokeC=smokes{i}.pos+[0,0,-3]*(tCur-tExp); if lineIntersectSphere(obsPos,pt,smokeC,rSmoke) covered=true; return; end end end
+end
+function intersect = lineIntersectSphere(A,B,C,r) AB=B-A; AC=C-A; t=dot(AB,AC)/dot(AB,AB); t=max(0,min(1,t)); closest=A+t*AB; intersect=norm(closest-C)<=r;
+end
+3 . 8  5 
+%q5_s.m
+60
+
+clc; clear; close all;
+%%  nUAV = 5; nBombPerUAV = 3; nBombs = nUAV * nBombPerUAV; nMissiles = 3; thetas = [3.1341, 3.8577, 1.7372, 3.8911, 2.1149]; vs = [121.5454, 121.1187, 120.5351, 114.6156, 120.5811]; t_releases = [
+0.1048, 3.1528, 5.1522; 2.7448, 6.4729, 8.9347; 19.9909, 23.5031, 28.9392; 8.7066, 15.6456, 16.7185; 13.7684, 14.7942, 21.0690 ]; t_fuses = [ 3.4897, 4.5851, 5.5055; 6.0025, 6.2674, 8.2847; 4.2478, 3.7896, 1.7055; 12.5703, 13.5010, 6.6965; 1.8218, 4.8601, 1.9302 ]; FY0 = [17800, 0, 1800;
+12000, 1400, 1400; 6000,-3000, 700; 11000, 2000, 1800; 13000,-2000, 1300]; M0 = [20000, 0, 2000; 19000, 600, 2100; 18000, -600, 1900]; vMissile = 300; rSmoke = 10; vSmoke = [0,0,-3]; g = 9.81; cylBot = [0,200,0]; H = 10; R = 7; cylTop = cylBot + [0,0,H]; maxDur = 20;
+%%  explosions = cell(nBombs,1); idx = 0; for u = 1:nUAV
+dir_u = [cos(thetas(u)), sin(thetas(u)), 0]; vVec_u = vs(u) * dir_u; for b = 1:nBombPerUAV
+idx = idx + 1; tr = t_releases(u,b); tf = t_fuses(u,b);
+61
+
+posRel = FY0(u,:) + vVec_u * tr; tExp = tr + tf; posExp = posRel + vVec_u*tf + 0.5*[0,0,-g]*tf^2; explosions{idx} = struct('time', tExp, 'pos', posExp, 'dur', maxDur, ...
+'uav', u, 'bombInUAV', b); end end
+%%  Tcover_ray = zeros(nBombs,nMissiles); Tcover_cone = zeros(nBombs,nMissiles); tVec_bomb = cell(nBombs,1); cov_ray_bomb = cell(nBombs,1); cov_cone_bomb = cell(nBombs,1);
+dt = 0.005;
+%  vMissVecs = zeros(nMissiles,3); for m = 1:nMissiles
+dirM = -M0(m,:) / norm(M0(m,:)); vMissVecs(m,:) = vMissile * dirM; end
+for i = 1:nBombs exp = explosions{i}; t0 = exp.time; tVec = t0:dt:(t0 + exp.dur); N = numel(tVec);
+cov_ray_all = false(N,nMissiles); cov_cone_all = false(N,nMissiles);
+for n = 1:N tCur = tVec(n); smokePos = exp.pos + vSmoke*(tCur - exp.time);
+for m = 1:nMissiles Mpos = M0(m,:) + vMissVecs(m,:) * tCur;
+cov_ray_all(n,m) = cylCoveredRay(Mpos, cylBot, cylTop, R, ... {struct('time',exp.time,'pos',exp.pos,'dur',exp.dur)}, tCur, rSmoke);
+L = norm(smokePos - Mpos); if L > rSmoke
+u = (smokePos - Mpos)/L; alpha = asin(min(1,rSmoke/L));
+62
+
+cov_cone_all(n,m) = cylInCone(Mpos, cylBot, cylTop, R, u, alpha); else
+cov_cone_all(n,m) = true; end end end
+for m = 1:nMissiles Tcover_ray(i,m) = sum(cov_ray_all(:,m))*dt; Tcover_cone(i,m) = sum(cov_cone_all(:,m))*dt;
+end
+tVec_bomb{i} = tVec; cov_ray_bomb{i} = cov_ray_all; cov_cone_bomb{i} = cov_cone_all; end
+%%  for i = 1:nBombs
+exp = explosions{i}; fprintf('\n %2d (UAV %d -  %d ):\n', i, exp.uav, exp.bombInUAV); fprintf('  = %.4f s,  = [%.4f, %.4f, %.4f]\n', ...
+exp.time, exp.pos(1), exp.pos(2), exp.pos(3)); for m = 1:nMissiles
+fprintf('  M%d:  = %.4f s,  = %.4f s\n', ... m, Tcover_ray(i,m), Tcover_cone(i,m));
+end fprintf(' >>> :  = %.4f s,  = %.4f s\n', ...
+sum(Tcover_ray(i,:)), sum(Tcover_cone(i,:))); end
+%%  figure('Name','-','NumberTitle','off'); subplot(1,2,1); imagesc(Tcover_ray); colorbar; title(' (s)'); xlabel(''); ylabel(''); subplot(1,2,2); imagesc(Tcover_cone); colorbar; title(' (s)'); xlabel(''); ylabel('');
+function covered = cylCoveredRay(obsPos, cylBot, cylTop, cylR, explosions, tCur, rSmoke) persistent sampPts cylBotP cylTopP cylRP if isempty(sampPts) || any(cylBot ~= cylBotP) || any(cylTop ~= cylTopP) || cylR ~= cylRP hSamp = 40; aSamp = 16; [aGrid,hGrid] = meshgrid(0:aSamp-1,0:hSamp); ang = 2*pi*aGrid(:)/aSamp; heights = hGrid(:)/hSamp; posH = cylBot + heights.*(cylTop-cylBot); sampPts = [cylR*cos(ang)+posH(:,1), cylR*sin(ang)+posH(:,2), posH(:,3)];
+63
+
+cylBotP = cylBot; cylTopP = cylTop; cylRP = cylR; end covered = true; for i = 1:size(sampPts,1)
+if ~pointCovered(obsPos,sampPts(i,:),explosions,tCur,rSmoke) covered = false; return;
+end end end
+function covered = pointCovered(obsPos,pt,explosions,tCur,rSmoke) covered = false; for i = 1:numel(explosions) tExp = explosions{i}.time; dur = explosions{i}.dur; if tCur >= tExp && tCur <= tExp+dur smokePos = explosions{i}.pos + [0,0,-3]*(tCur-tExp); if lineIntersectSphere(obsPos,pt,smokePos,rSmoke) covered = true; return; end end end
+end
+function intersect = lineIntersectSphere(A,B,C,r) AB = B-A; if all(AB==0), intersect = norm(A-C)<=r; return; end t = dot(AB,C-A)/dot(AB,AB); t = max(0,min(1,t)); closest = A + t*AB; intersect = norm(closest-C)<=r;
+end
+function inside = cylInCone(obsPos,cylBot,cylTop,cylR,u,alpha) inside = isDiskInCone(obsPos,cylBot,cylR,u,alpha) && ... isDiskInCone(obsPos,cylTop,cylR,u,alpha);
+end
+function inside = isDiskInCone(V, C, r, u, alpha) tol = 1e-12; negTol = -1e-9;
+w = C(:) - V(:); s0 = dot(w, u(:)); Ax = u(1); Ay = u(2); A = Ax; B = Ay; C1 = w(1); C2 = w(2); W2 = dot(w,w); k = (cos(alpha))^2;
+64
+
+amp = r * sqrt(A^2 + B^2); if s0 - amp < -tol
+inside = false; return; end
+%  h(theta) = s(theta)^2 - ||P-V||^2 * cos^2(alpha) %  h = C0 + Cc*cos + Cs*sin + Ccos2*cos2 + Csin2*sin2 C0 = s0^2 - k*(W2 + r^2) + r^2*(A^2 + B^2)/2; Cc = 2*s0*r*A - 2*k*r*C1; Cs = 2*s0*r*B - 2*k*r*C2; Ccos2 = r^2*(A^2 - B^2)/2; Csin2 = r^2*(A*B);
+%  h(theta) * (1+t^2)^2  P(t) = c4 t^4 + c3 t^3 + c2 t^2 + c1 t + c0 c0 = C0 + Cc + Ccos2; c1 = 2*Cs + 4*Csin2; c2 = 2*C0 - 6*Ccos2; c3 = 2*Cs - 4*Csin2; c4 = C0 - Cc + Ccos2;
+%  p = [c4, c3, c2, c1, c0];
+%  -inf ->  if c4 < -tol
+inside = false; return; end
+% c dp = [4*c4, 3*c3, 2*c2, c1]; rts = roots(dp); cand = []; for i = 1:numel(rts)
+if abs(imag(rts(i))) < 1e-8 cand(end+1) = real(rts(i));
+end end %  t=0c theta=0 cand(end+1) = 0;
+%  P  t  if abs(c4) < tol
+T = 1e6; cand(end+1) = T;
+65
+
+cand(end+1) = -T; end Pvals = polyval(p, cand); Pmin = min(Pvals); %  h(theta) = P(t) / (1+t^2)^2>0 P(t)  h(theta) 
+theta  if Pmin < negTol
+inside = false; else
+inside = true; end end
+66
+
+

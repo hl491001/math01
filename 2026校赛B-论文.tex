@@ -821,7 +821,146 @@ CP-SAT模型驱动的研发台架任务调度优化策略[J].
 \end{thebibliography}
 
 \appendix
-\section{求解程序源代码}\label{app:code}
+
+%==================================================================
+\section{附录 A\quad 支撑材料文件列表}
+
+本项目所有支撑材料文件整理如表~\ref{tab:filelist} 所示。全部程序基于 Python 3.11 编写，依赖 OR-Tools 9.x（CP-SAT 求解器）、NumPy、Pandas、Matplotlib 等开源库。
+
+\begin{table}[H]
+\centering
+\caption{支撑材料文件列表}\label{tab:filelist}
+\small
+\begin{tabular}{p{0.8cm} p{4.5cm} p{2.5cm} p{6.2cm}}
+\toprule
+\textbf{序号} & \textbf{文件名} & \textbf{类型} & \textbf{功能说明} \\
+\midrule
+1 & \texttt{B-附件.xlsx} & 数据文件 & 赛题原始数据（工序流程、班组配置、车间距离） \\
+2 & \texttt{solver.py} & Python 程序 & CP-SAT 核心求解器，含数据定义与统一求解接口 \\
+3 & \texttt{heuristic.py} & Python 程序 & 元启发式层：GA、SA 算法实现与路由弧提取 \\
+4 & \texttt{hybrid\_solve.py} & Python 程序 & 两层混合求解框架入口；Q4 购置组合枚举 \\
+5 & \texttt{tune\_params.py} & Python 程序 & GA/SA 超参数网格搜索与冷/热启动对比 \\
+6 & \texttt{validate.py} & Python 程序 & 独立可行性校验器（先后、不重叠、转运、协同完工） \\
+7 & \texttt{extract.py} & Python 程序 & 从最优解提取逐设备调度明细（生成表 1--表 4） \\
+8 & \texttt{ga\_q2.py} & Python 程序 & 遗传算法独立调用脚本（问题二） \\
+9 & \texttt{sa\_q2.py} & Python 程序 & 模拟退火独立调用脚本（问题二） \\
+10 & \texttt{cross\_validate.py} & Python 程序 & 混合求解结果对照与一致性验证 \\
+11 & \texttt{make\_figs.py} & Python 程序 & 甘特图与热力图生成程序 \\
+12 & \texttt{tune\_results.json} & 结果文件 & 超参数网格搜索结果原始数据 \\
+13 & \texttt{cold\_hot.json} & 结果文件 & 冷/热启动 CP-SAT 耗时对比原始数据 \\
+14 & \texttt{figs/gantt\_q2.png} & 图像文件 & 问题二调度甘特图 \\
+15 & \texttt{figs/gantt\_q3.png} & 图像文件 & 问题三调度甘特图 \\
+16 & \texttt{figs/gantt\_q4.png} & 图像文件 & 问题四调度甘特图 \\
+17 & \texttt{figs/load\_heatmap.png} & 图像文件 & 各类设备作业载荷热力图 \\
+18 & \texttt{figs/util\_heatmap.png} & 图像文件 & 各问设备利用率热力图 \\
+19 & \texttt{figs/buy\_heatmap.png} & 图像文件 & 购置组合对总工期影响热力图 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==================================================================
+\section{附录 B\quad 各程序的初值选取与参数设置}
+
+\subsection*{B.1 遗传算法（GA）参数设置}
+
+GA 采用基于工序的排列编码，染色体长度为各车间工序数之和（问题二至四为 34）。各参数经网格搜索确定（见正文表~\ref{tab:tune}），详细设置见表~\ref{tab:ga-params}。
+
+\begin{table}[H]
+\centering
+\caption{遗传算法参数设置}\label{tab:ga-params}
+\begin{tabular}{p{4.5cm} p{3.5cm} p{6.5cm}}
+\toprule
+\textbf{参数} & \textbf{取值} & \textbf{说明} \\
+\midrule
+种群规模 $N_{\mathrm{pop}}$ & 150 & 每代保留的染色体数量 \\
+最大迭代代数 $G$ & 800 & 终止条件；问题二经实验 800 代收敛稳定 \\
+变异概率 $p_m$ & 0.2 & 每个子代染色体执行对换变异的概率 \\
+锦标赛规模 $k$ & 3 & 每次从种群随机抽取 3 个个体，择优作为父代 \\
+交叉方式 & POX & 优先保留顺序交叉，保证子代多重集约束 \\
+精英保留 & 1（最优个体） & 每代最优染色体直接进入下一代 \\
+\midrule
+\multicolumn{3}{l}{\textbf{初值选取}} \\
+\midrule
+初始种群 & 随机生成 & 对模板向量 $[0,0,0,1,1,1,1,2,\dots,4,4,4]$ 执行 \texttt{random.shuffle} \\
+随机种子 & 0 & 固定种子以确保结果可复现 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{B.2 模拟退火（SA）参数设置}
+
+SA 以 GA 最优染色体为初始解，通过 Metropolis 准则进行概率性局部搜索。参数设置见表~\ref{tab:sa-params}。
+
+\begin{table}[H]
+\centering
+\caption{模拟退火参数设置}\label{tab:sa-params}
+\begin{tabular}{p{4.5cm} p{3.5cm} p{6.5cm}}
+\toprule
+\textbf{参数} & \textbf{取值} & \textbf{说明} \\
+\midrule
+初始温度 $T_0$ & 4000 & 高温保证初期接受劣解能力，充分探索解空间 \\
+终止温度 $T_{\mathrm{end}}$ & $10^{-2}$ & 低温阶段趋于贪婪搜索 \\
+冷却系数 $\alpha$ & 0.97 & 指数退火 $T\leftarrow\alpha T$；总温度级数约 424 级 \\
+每温迭代次数 $N_{\mathrm{iter}}$ & 400 & 每个温度下邻域搜索次数；总尝试约 $1.7\times 10^5$ 次 \\
+邻域结构 & Swap / Reinsert & 各以 0.5 概率选取；Swap 交换两个基因位置，Reinsert 取出一个基因后随机插入 \\
+\midrule
+\multicolumn{3}{l}{\textbf{初值选取}} \\
+\midrule
+初始解 & GA 最优染色体 & 染色体由 GA 800 代最优个体传入；若 GA 失败则随机生成 \\
+随机种子 & 0 & 固定种子以确保结果可复现 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{B.3 CP-SAT 求解器参数设置}
+
+CP-SAT 作为精确求解层，接收元启发式提供的 Hint 进行热启动。参数设置见表~\ref{tab:cpsat-params}。
+
+\begin{table}[H]
+\centering
+\caption{CP-SAT 求解器参数设置}\label{tab:cpsat-params}
+\begin{tabular}{p{4.5cm} p{4.0cm} p{6.0cm}}
+\toprule
+\textbf{参数} & \textbf{取值} & \textbf{说明} \\
+\midrule
+并行搜索线程数 & 8 & \texttt{num\_search\_workers}=8，充分利用多核 CPU \\
+求解时限（问题一） & 20 s & 单车间规模极小，秒级可证最优 \\
+求解时限（问题二） & 120 s & 冷/热启动均设为 120 s \\
+求解时限（问题三） & 180 s & 资源池化后搜索空间增大 \\
+求解时限（问题四/单组合） & 40 s & 外层枚举多个购置组合，内层设 40 s 控制总耗时 \\
+时间上界 $H$ & $\sum\max(p_{o,r})+50000$ & 约 $2\times 10^5$ s，远大于最优值，确保不截断可行域 \\
+大 $M$ 常数 & $=H$ & 取时间上界，确保析取约束在弧未激活时自动松弛 \\
+\midrule
+\multicolumn{3}{l}{\textbf{Hint 热启动设置}} \\
+\midrule
+Hint 来源 & GA $\rightarrow$ SA 最优解 & 经 \texttt{validate.py} 可行性校验后注入 \\
+注入变量 & $S_i$, $E_i$, $C_{\max}$, $x^{r}_{o,o'}$ & 覆盖全部决策变量 \\
+Hint 性质 & 搜索引导 & 不设硬约束，不裁剪可行域；CP-SAT 仍可探索更优解 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{B.4 各问题的参数差异}
+
+不同问题仅在设备台数配置（\texttt{counts}）与基地集合（\texttt{bases}）上存在差异，GA/SA/CP-SAT 核心参数保持一致。各问题的差异化参数见表~\ref{tab:prob-params}。
+
+\begin{table}[H]
+\centering
+\caption{各问题差异化参数}\label{tab:prob-params}
+\begin{tabular}{c c c c c c c c}
+\toprule
+\textbf{问题} & \textbf{车间} & \textbf{输送臂} & \textbf{清洗机} & \textbf{灌装机} & \textbf{传感机} & \textbf{抛光机} & \textbf{基地} \\
+\midrule
+一 & \{A\} & 4 & 5 & 5 & 1 & 1 & $\{\mathrm{G1}\}$ \\
+二 & \{A,B,C,D,E\} & 4 & 5 & 5 & 1 & 1 & $\{\mathrm{G1}\}$ \\
+三 & \{A,B,C,D,E\} & 8 & 10 & 10 & 2 & 2 & $\{\mathrm{G1},\mathrm{G2}\}$ \\
+四 & \{A,B,C,D,E\} & 8 & 10 & 10 & 5 & 5 & $\{\mathrm{G1},\mathrm{G2}\}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%==================================================================
+\section{附录 C\quad 求解程序源代码}\label{app:code}
 
 本附录给出全部求解所用的 Python 程序。程序基于 OR-Tools CP-SAT，以两层混合求解（GA/SA 上界 + CP-SAT Hint 热启动）完成问题二至四。文件清单：\texttt{solver.py}、\texttt{heuristic.py}、\texttt{hybrid\_solve.py}、\texttt{tune\_params.py}、\texttt{extract.py}、\texttt{ga\_q2.py}、\texttt{sa\_q2.py}、\texttt{cross\_validate.py}、\texttt{validate.py}、\texttt{make\_figs.py}。
 
